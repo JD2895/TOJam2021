@@ -33,6 +33,14 @@ public class @BasicMoveset : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""edf72d9a-3dd0-481c-835d-e2438d7494ed"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -79,6 +87,39 @@ public class @BasicMoveset : IInputActionCollection, IDisposable
                     ""action"": ""Right"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8e4e1774-16a0-46bd-bd1b-418b47e16c5b"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7cfe4072-73ec-4c5f-b669-036fd263c843"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""38c7f747-aaba-41b8-b6e5-2942c953643a"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -89,6 +130,7 @@ public class @BasicMoveset : IInputActionCollection, IDisposable
         m_Basic = asset.FindActionMap("Basic", throwIfNotFound: true);
         m_Basic_Left = m_Basic.FindAction("Left", throwIfNotFound: true);
         m_Basic_Right = m_Basic.FindAction("Right", throwIfNotFound: true);
+        m_Basic_Jump = m_Basic.FindAction("Jump", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -140,12 +182,14 @@ public class @BasicMoveset : IInputActionCollection, IDisposable
     private IBasicActions m_BasicActionsCallbackInterface;
     private readonly InputAction m_Basic_Left;
     private readonly InputAction m_Basic_Right;
+    private readonly InputAction m_Basic_Jump;
     public struct BasicActions
     {
         private @BasicMoveset m_Wrapper;
         public BasicActions(@BasicMoveset wrapper) { m_Wrapper = wrapper; }
         public InputAction @Left => m_Wrapper.m_Basic_Left;
         public InputAction @Right => m_Wrapper.m_Basic_Right;
+        public InputAction @Jump => m_Wrapper.m_Basic_Jump;
         public InputActionMap Get() { return m_Wrapper.m_Basic; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -161,6 +205,9 @@ public class @BasicMoveset : IInputActionCollection, IDisposable
                 @Right.started -= m_Wrapper.m_BasicActionsCallbackInterface.OnRight;
                 @Right.performed -= m_Wrapper.m_BasicActionsCallbackInterface.OnRight;
                 @Right.canceled -= m_Wrapper.m_BasicActionsCallbackInterface.OnRight;
+                @Jump.started -= m_Wrapper.m_BasicActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_BasicActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_BasicActionsCallbackInterface.OnJump;
             }
             m_Wrapper.m_BasicActionsCallbackInterface = instance;
             if (instance != null)
@@ -171,6 +218,9 @@ public class @BasicMoveset : IInputActionCollection, IDisposable
                 @Right.started += instance.OnRight;
                 @Right.performed += instance.OnRight;
                 @Right.canceled += instance.OnRight;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
             }
         }
     }
@@ -179,5 +229,6 @@ public class @BasicMoveset : IInputActionCollection, IDisposable
     {
         void OnLeft(InputAction.CallbackContext context);
         void OnRight(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
     }
 }
