@@ -21,7 +21,7 @@ public class JumpPadInteraction : MonoBehaviour
 
     public void CheckForJumpPad()
     {
-        Debug.Log("Checking for jump pad");
+        //Debug.Log("Checking for jump pad");
         RaycastHit2D[] castResults = new RaycastHit2D[2];
         int numberHit = rb.Cast(Vector2.down, castResults, castCheckDistance);
         if(numberHit > 0)

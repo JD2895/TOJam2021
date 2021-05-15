@@ -21,7 +21,7 @@ public class BeatController : MonoBehaviour
     //bool invokingEvents = true;
     BeatEvent[] beatEvents;
     float secondsBetweenBeats;
-    float timeOfLastBeat;
+    Coroutine beatEventInvoker;
 
     private void Awake()
     {
@@ -51,31 +51,34 @@ public class BeatController : MonoBehaviour
 
     private void Start()
     {
-
         songSource = this.GetComponent<AudioSource>();
         songSource.clip = currentSongData.beatsOnlyClip;
         songSource.Play();
-        timeOfLastBeat = Time.time + startOffset;
         beatEvents = currentSongData.beatEvents;
         secondsBetweenBeats = songSource.clip.length / 16f;
-        StartCoroutine(BeatEventInvoker());
+        beatEventInvoker = StartCoroutine(BeatEventInvoker());
     }
 
     public void RestartCurrentTrack()
     {
         songSource.Stop();
+        this.StopCoroutine(beatEventInvoker);
         songSource.Play();
+        beatEventInvoker = StartCoroutine(BeatEventInvoker());
     }
 
     public IEnumerator BeatEventInvoker()
     {
-        int eventIterator = 1; // Skip first event to avoid race issues
-        BeatEvent nextEvent = beatEvents[eventIterator];
+        BeatEvent nextEvent;
+        int curDiv = 0, newDiv;
 
         while (true)
         {
-            if (Time.time - timeOfLastBeat >= secondsBetweenBeats)
+            newDiv = GetSongPositionInt();
+
+            while (curDiv != newDiv)
             {
+                nextEvent = beatEvents[curDiv];
                 switch (nextEvent)
                 {
                     case BeatEvent.None:
@@ -84,16 +87,19 @@ public class BeatController : MonoBehaviour
                         jumpPadEvent.Invoke();
                         break;
                 }
-
-                eventIterator += 1;
-                if (eventIterator >= beatEvents.Length)
-                    eventIterator = 0;
-                nextEvent = beatEvents[eventIterator];
-
-                timeOfLastBeat = Time.time;
+                curDiv += 1;
+                if (curDiv >= 16)
+                    curDiv = 0;
+                yield return null;
             }
             yield return null;
         }
+    }
+
+    private int GetSongPositionInt()
+    {
+        int currentDivision = (int) Mathf.Floor(songSource.time / secondsBetweenBeats);
+        return currentDivision;
     }
 }
 

@@ -2703,7 +2703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSongData: {fileID: 11400000, guid: 2d191155f90176f49aca8401920413f6, type: 2}
-  beatEvents: 
+  startOffset: -0.35
 --- !u!4 &1618638633
 Transform:
   m_ObjectHideFlags: 0
@@ -2987,5 +2987,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5630bfae5207cd344b60dd5072d1d04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  castCheckDistance: 5
-  jumpPadForce: 3
+  castCheckDistance: 1
+  jumpPadForce: 5
