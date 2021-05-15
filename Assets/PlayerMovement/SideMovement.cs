@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class SideMovement : MonoBehaviour
 {
+    public bool playerInControl = true;
     public float sideMoveAcceleration;
     public float sideMoveMax;
     public float noInputFrictionMultiplier;
@@ -17,10 +18,14 @@ public class SideMovement : MonoBehaviour
     private void Awake()
     {
         controls = new BasicMoveset();
-        controls.Basic.Left.performed += _ => MoveLeftStart();
-        controls.Basic.Right.performed += _ => MoveRightStart();
-        controls.Basic.Left.canceled += _ => MoveLeftEnd();
-        controls.Basic.Right.canceled += _ => MoveRightEnd();
+
+        if (playerInControl)
+        {
+            controls.Basic.Left.performed += _ => MoveLeftStart();
+            controls.Basic.Right.performed += _ => MoveRightStart();
+            controls.Basic.Left.canceled += _ => MoveLeftEnd();
+            controls.Basic.Right.canceled += _ => MoveRightEnd();
+        }
     }
 
     private void OnEnable()
@@ -94,6 +99,20 @@ public class SideMovement : MonoBehaviour
     {
         if (toMoveDir == MoveDir.Right)
             toMoveDir = MoveDir.None;
+    }
+
+    public void SetPlayerInControl(bool toSet)
+    {
+        if (toSet)
+        {
+            controls.Enable();
+        }
+        else
+        {
+            controls.Disable();
+        }
+        toMoveDir = MoveDir.None;
+        playerInControl = toSet;
     }
 
     public enum MoveDir

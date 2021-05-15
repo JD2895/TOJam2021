@@ -122,6 +122,109 @@ public class @BasicMoveset : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Debug"",
+            ""id"": ""d80ee12a-45ee-4afa-b04d-03855d408c4c"",
+            ""actions"": [
+                {
+                    ""name"": ""ClearRecording"",
+                    ""type"": ""Button"",
+                    ""id"": ""cf87410c-23af-4483-b850-c25c96289a7e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""StartRecording"",
+                    ""type"": ""Button"",
+                    ""id"": ""aceae024-4f86-43f9-8fe9-a94ae1c55c6c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""StopRecording"",
+                    ""type"": ""Button"",
+                    ""id"": ""14eefeff-2af5-42a5-94f1-9f9eef03e001"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""PlayRecording"",
+                    ""type"": ""Button"",
+                    ""id"": ""6b56d202-fe81-45cf-b9ef-840fee594fd7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""EndPlayback"",
+                    ""type"": ""Button"",
+                    ""id"": ""55b077d2-123c-4eb1-91e3-f1f0c47778c7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""4558a2ab-3cb8-4e8a-8a33-60e99170052e"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StartRecording"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""080cb7a3-e969-49c9-baf1-1065cf325add"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayRecording"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5756712e-2b02-4518-8a7c-026fe8811a63"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EndPlayback"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cd9ed7f2-aa28-4a6d-9e57-6a01e273414e"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StopRecording"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""70965413-c3e5-4310-8891-cf8705c752a7"",
+                    ""path"": ""<Keyboard>/backquote"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ClearRecording"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -131,6 +234,13 @@ public class @BasicMoveset : IInputActionCollection, IDisposable
         m_Basic_Left = m_Basic.FindAction("Left", throwIfNotFound: true);
         m_Basic_Right = m_Basic.FindAction("Right", throwIfNotFound: true);
         m_Basic_Jump = m_Basic.FindAction("Jump", throwIfNotFound: true);
+        // Debug
+        m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
+        m_Debug_ClearRecording = m_Debug.FindAction("ClearRecording", throwIfNotFound: true);
+        m_Debug_StartRecording = m_Debug.FindAction("StartRecording", throwIfNotFound: true);
+        m_Debug_StopRecording = m_Debug.FindAction("StopRecording", throwIfNotFound: true);
+        m_Debug_PlayRecording = m_Debug.FindAction("PlayRecording", throwIfNotFound: true);
+        m_Debug_EndPlayback = m_Debug.FindAction("EndPlayback", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -225,10 +335,83 @@ public class @BasicMoveset : IInputActionCollection, IDisposable
         }
     }
     public BasicActions @Basic => new BasicActions(this);
+
+    // Debug
+    private readonly InputActionMap m_Debug;
+    private IDebugActions m_DebugActionsCallbackInterface;
+    private readonly InputAction m_Debug_ClearRecording;
+    private readonly InputAction m_Debug_StartRecording;
+    private readonly InputAction m_Debug_StopRecording;
+    private readonly InputAction m_Debug_PlayRecording;
+    private readonly InputAction m_Debug_EndPlayback;
+    public struct DebugActions
+    {
+        private @BasicMoveset m_Wrapper;
+        public DebugActions(@BasicMoveset wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ClearRecording => m_Wrapper.m_Debug_ClearRecording;
+        public InputAction @StartRecording => m_Wrapper.m_Debug_StartRecording;
+        public InputAction @StopRecording => m_Wrapper.m_Debug_StopRecording;
+        public InputAction @PlayRecording => m_Wrapper.m_Debug_PlayRecording;
+        public InputAction @EndPlayback => m_Wrapper.m_Debug_EndPlayback;
+        public InputActionMap Get() { return m_Wrapper.m_Debug; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DebugActions set) { return set.Get(); }
+        public void SetCallbacks(IDebugActions instance)
+        {
+            if (m_Wrapper.m_DebugActionsCallbackInterface != null)
+            {
+                @ClearRecording.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnClearRecording;
+                @ClearRecording.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnClearRecording;
+                @ClearRecording.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnClearRecording;
+                @StartRecording.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnStartRecording;
+                @StartRecording.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnStartRecording;
+                @StartRecording.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnStartRecording;
+                @StopRecording.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnStopRecording;
+                @StopRecording.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnStopRecording;
+                @StopRecording.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnStopRecording;
+                @PlayRecording.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnPlayRecording;
+                @PlayRecording.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnPlayRecording;
+                @PlayRecording.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnPlayRecording;
+                @EndPlayback.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnEndPlayback;
+                @EndPlayback.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnEndPlayback;
+                @EndPlayback.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnEndPlayback;
+            }
+            m_Wrapper.m_DebugActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @ClearRecording.started += instance.OnClearRecording;
+                @ClearRecording.performed += instance.OnClearRecording;
+                @ClearRecording.canceled += instance.OnClearRecording;
+                @StartRecording.started += instance.OnStartRecording;
+                @StartRecording.performed += instance.OnStartRecording;
+                @StartRecording.canceled += instance.OnStartRecording;
+                @StopRecording.started += instance.OnStopRecording;
+                @StopRecording.performed += instance.OnStopRecording;
+                @StopRecording.canceled += instance.OnStopRecording;
+                @PlayRecording.started += instance.OnPlayRecording;
+                @PlayRecording.performed += instance.OnPlayRecording;
+                @PlayRecording.canceled += instance.OnPlayRecording;
+                @EndPlayback.started += instance.OnEndPlayback;
+                @EndPlayback.performed += instance.OnEndPlayback;
+                @EndPlayback.canceled += instance.OnEndPlayback;
+            }
+        }
+    }
+    public DebugActions @Debug => new DebugActions(this);
     public interface IBasicActions
     {
         void OnLeft(InputAction.CallbackContext context);
         void OnRight(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+    }
+    public interface IDebugActions
+    {
+        void OnClearRecording(InputAction.CallbackContext context);
+        void OnStartRecording(InputAction.CallbackContext context);
+        void OnStopRecording(InputAction.CallbackContext context);
+        void OnPlayRecording(InputAction.CallbackContext context);
+        void OnEndPlayback(InputAction.CallbackContext context);
     }
 }
