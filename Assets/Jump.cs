@@ -34,6 +34,6 @@ public class Jump : MonoBehaviour
     public void ApplyJumpForce()
     {
         rb.velocity = new Vector2(rb.velocity.x, 0);
-        rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+        rb.AddForce((Vector2.up * jumpForce), ForceMode2D.Impulse);
     }
 }

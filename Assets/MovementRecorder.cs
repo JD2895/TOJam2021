@@ -139,7 +139,11 @@ public class MovementRecorder : MonoBehaviour
         
         Debug.Log("Starting Move Recording");
         startTime = Time.time;
-        startingPosition = playerObject.transform.position;
+
+        // Player Positioning
+        //startingPosition = playerObject.transform.position;
+        playerObject.transform.position = startingPosition;
+
         isRecording = true;
     }
 
