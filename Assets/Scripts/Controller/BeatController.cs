@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Events;
 using UnityEngine.Audio;
 
@@ -47,7 +48,7 @@ public class BeatController : MonoBehaviour
 
     private void OnEnable()
     {
-        controls.Enable();
+        var RestartAction = new inpu
     }
 
     private void OnDisable()
@@ -142,6 +143,11 @@ public class BeatController : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         beatEventInvoker = StartCoroutine(BeatEventInvoker());
+    }
+
+    public void RestartRequest()
+    {
+        controls.Debug.PlayRecording.
     }
 }
 

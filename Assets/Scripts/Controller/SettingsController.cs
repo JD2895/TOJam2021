@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class SettingsController : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class SettingsController : MonoBehaviour
     float returningTimescale = 1f;
 
     public GameObject menuObject;
+    public event Action levelFinishEvent;
 
     // Hazard Collision
     bool _hazardCollisionEnabled = true;
@@ -82,7 +84,7 @@ public class SettingsController : MonoBehaviour
         inputCalSlider.value = _inputCalibration;
     }
 
-    private void ToggleMenu()
+    public void ToggleMenu()
     {
         menuEnabled = !menuEnabled;
         menuObject.SetActive(menuEnabled);
@@ -110,6 +112,11 @@ public class SettingsController : MonoBehaviour
         SceneManager.LoadScene(levelName);
     }
 
+    public void LoadLevel(string levelName)
+    {
+        StartCoroutine(LoadOutTransition(levelName));
+    }
+
     public void NextLevel()
     {
         Time.timeScale = returningTimescale;
@@ -126,6 +133,11 @@ public class SettingsController : MonoBehaviour
         if (prevIndex <= 0)
             prevIndex = 0;
         StartCoroutine(LoadOutTransition(listOfLevels[prevIndex]));
+    }
+
+    public void TriggerLevelFinish()
+    {
+        levelFinishEvent?.Invoke();
     }
 
     public void Exit()

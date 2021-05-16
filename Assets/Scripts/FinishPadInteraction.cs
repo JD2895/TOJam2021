@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class FinishPadInteraction : MonoBehaviour
 {
@@ -11,7 +12,6 @@ public class FinishPadInteraction : MonoBehaviour
     MovementRecorder movementRecorder;
     SideMovement sideMovement;
     ArtificialGravity artificialGravity;
-
     BasicMoveset controls;
 
     private void Awake()
@@ -55,6 +55,13 @@ public class FinishPadInteraction : MonoBehaviour
             movementRecorder.enabled = false;
             sideMovement.enabled = false;
             //artificialGravity.enabled = false;
+            StartCoroutine(SlightDelayBeforeFinish());
         }
+    }
+
+    public  IEnumerator SlightDelayBeforeFinish()
+    {
+        yield return new WaitForSeconds(1f);
+        SettingsController.Instance.TriggerLevelFinish();
     }
 }
