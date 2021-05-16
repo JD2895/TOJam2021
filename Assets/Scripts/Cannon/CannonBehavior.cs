@@ -5,6 +5,7 @@ using UnityEngine;
 public class CannonBehavior : MonoBehaviour
 {
     public GameObject cannonprojectilePrefab;
+    public Transform projectileSpawnPoint;
 
     private void OnEnable()
     {
@@ -19,6 +20,6 @@ public class CannonBehavior : MonoBehaviour
     private void FireCannon()
     {
         Quaternion startingRotation = Quaternion.FromToRotation(Vector3.up, (this.transform.right * -1f));
-        GameObject projectile = Instantiate(cannonprojectilePrefab, this.transform.position, startingRotation);
+        GameObject projectile = Instantiate(cannonprojectilePrefab, projectileSpawnPoint.position, startingRotation);
     }
 }
