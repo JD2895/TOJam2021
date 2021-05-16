@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5253723384770268267}
   - component: {fileID: 5253723384770268264}
   - component: {fileID: 5253723384770268265}
+  - component: {fileID: 2030163947260122782}
+  - component: {fileID: 1007715871050142642}
   m_Layer: 0
   m_Name: Jump Pad
   m_TagString: Jump Pad
@@ -80,6 +82,38 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2030163947260122782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5253723384770268270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff7e73fb862bba249b7a4cf747171dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beatEventAnimator: {fileID: 1007715871050142642}
+--- !u!95 &1007715871050142642
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5253723384770268270}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b7278779eb1553043a1424a9ee15258b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5253723385542045282
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CannonProjectileInteraction : MonoBehaviour
+public class HazardInteraction : MonoBehaviour
 {
     bool isInteractable = false;
 
@@ -53,12 +53,12 @@ public class CannonProjectileInteraction : MonoBehaviour
         if (collision.CompareTag("Hazard") && isInteractable && SettingsController.Instance.HazardCollisionEnabled)
         {
             Debug.Log("DED");
-            //BeatController.Instance.
-            rb.bodyType = RigidbodyType2D.Static;
+            BeatController.Instance.RestartRequest();
+            /*rb.bodyType = RigidbodyType2D.Static;
             mainCollider.enabled = false;
             movementRecorder.enabled = false;
             sideMovement.enabled = false;
-            artificialGravity.enabled = false;
+            artificialGravity.enabled = false;*/
         }
     }
 }
