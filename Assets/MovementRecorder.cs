@@ -33,10 +33,7 @@ public class MovementRecorder : MonoBehaviour
         controls.Basic.Right.canceled += _ => RecordMove(ActionType.EndRight);
         
         controls.Debug.StartRecording.performed += _ => StartRecording();
-        //controls.Debug.StopRecording.performed += _ => StopRecording();
         controls.Debug.PlayRecording.performed += _ => PlaybackRecordedMoves();
-        //controls.Debug.ClearRecording.performed += _ => ClearRecordedMoves();
-        //controls.Debug.EndPlayback.performed += _ => EndPlayback();
     }
 
     private void OnEnable()
@@ -94,7 +91,6 @@ public class MovementRecorder : MonoBehaviour
         else
         {
             Debug.Log("No moves to play");
-            //ChangeControlState(true);
         }
 
     }
@@ -110,7 +106,6 @@ public class MovementRecorder : MonoBehaviour
         startTime = Time.time;
 
         // Player Positioning
-        //startingPosition = playerObject.transform.position;
         playerObject.transform.position = startingPosition;
 
         isRecording = true;
@@ -150,7 +145,6 @@ public class MovementRecorder : MonoBehaviour
         }
 
         Debug.Log("Playback Ended");
-        //ChangeControlState(true);
     }
 
     private void ClearRecordedMoves(bool stopOtherActions = true)
@@ -171,7 +165,6 @@ public class MovementRecorder : MonoBehaviour
             Debug.Log("Ending playback");
             this.StopCoroutine(playbackRoutine);
             isPlayingMoves = false;
-            //playerObject.transform.position = startingPosition;
         }
     }
 
