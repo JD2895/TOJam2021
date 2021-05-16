@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2678383327937392170}
   - component: {fileID: 2678383327937392171}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cannon Projectile Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,9 +94,9 @@ GameObject:
   - component: {fileID: 2678383328766428039}
   - component: {fileID: 2678383328766428036}
   - component: {fileID: 2678383328766428037}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cannon Projectile
-  m_TagString: Untagged
+  m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Jump Pad
+  - Finish Pad
+  - Hazard
   layers:
   - Default
   - TransparentFX
