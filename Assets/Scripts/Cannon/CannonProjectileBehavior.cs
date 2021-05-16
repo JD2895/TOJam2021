@@ -18,11 +18,13 @@ public class CannonProjectileBehavior : MonoBehaviour
     private void OnEnable()
     {
         controls.Enable();
+        BeatController.Instance.playbackRestartEvent += () => { Destroy(this.gameObject); };
     }
 
     private void OnDisable()
     {
         controls.Disable();
+        BeatController.Instance.playbackRestartEvent -= () => { Destroy(this.gameObject); };
     }
 
     void Start()

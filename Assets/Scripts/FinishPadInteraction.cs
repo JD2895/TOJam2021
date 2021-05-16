@@ -24,14 +24,16 @@ public class FinishPadInteraction : MonoBehaviour
     private void OnEnable()
     {
         controls.Enable();
+        BeatController.Instance.playbackRestartEvent += () => { ChangeInteractionState(false); };
     }
 
     private void OnDisable()
     {
         controls.Disable();
+        BeatController.Instance.playbackRestartEvent -= () => { ChangeInteractionState(false); };
     }
 
-    private void ChangeInteractionState(bool isRecording)
+    private void ChangeInteractionState(bool isRecording = false)
     {
         isInteractable = !isRecording;
     }

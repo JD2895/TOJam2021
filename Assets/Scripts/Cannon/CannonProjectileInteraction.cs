@@ -24,11 +24,13 @@ public class CannonProjectileInteraction : MonoBehaviour
     private void OnEnable()
     {
         controls.Enable();
+        BeatController.Instance.playbackRestartEvent += () => { ChangeInteractionState(false); };
     }
 
     private void OnDisable()
     {
         controls.Disable();
+        BeatController.Instance.playbackRestartEvent -= () => { ChangeInteractionState(false); };
     }
 
     private void ChangeInteractionState(bool isRecording)
@@ -51,6 +53,7 @@ public class CannonProjectileInteraction : MonoBehaviour
         if (collision.CompareTag("Hazard") && isInteractable && SettingsController.Instance.HazardCollisionEnabled)
         {
             Debug.Log("DED");
+            //BeatController.Instance.
             rb.bodyType = RigidbodyType2D.Static;
             mainCollider.enabled = false;
             movementRecorder.enabled = false;

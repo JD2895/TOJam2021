@@ -39,11 +39,13 @@ public class MovementRecorder : MonoBehaviour
     private void OnEnable()
     {
         controls.Enable();
+        BeatController.Instance.playbackRestartEvent += PlaybackRecordedMoves;
     }
 
     private void OnDisable()
     {
         controls.Disable();
+        BeatController.Instance.playbackRestartEvent -= PlaybackRecordedMoves;
     }
 
     private void Start()

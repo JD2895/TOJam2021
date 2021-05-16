@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 using UnityEngine.Events;
 using UnityEngine.Audio;
 
@@ -20,6 +21,7 @@ public class BeatController : MonoBehaviour
     public event Action playerInputEvent;
     public event Action fireCannonEvent;
     public event Action<int> beatEvent;
+    public event Action playbackRestartEvent;
 
     AudioSource songSource;
     BasicMoveset controls;
@@ -46,9 +48,14 @@ public class BeatController : MonoBehaviour
         controls.Debug.PlayRecording.performed += _ => RestartCurrentTrack(false);
     }
 
+    public void RestartRequest()
+    {
+        playbackRestartEvent?.Invoke();
+    }
+
     private void OnEnable()
     {
-        var RestartAction = new inpu
+        controls.Enable();
     }
 
     private void OnDisable()
@@ -70,6 +77,7 @@ public class BeatController : MonoBehaviour
     public void RestartCurrentTrack(bool beatsOnly)
     {
         songSource.Stop();
+        //playbackRestartEvent?.Invoke();
         this.StopCoroutine(beatEventInvoker);
         if (beatsOnly)
             songSource.clip = currentSongData.beatsOnlyClip;
@@ -143,11 +151,6 @@ public class BeatController : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         beatEventInvoker = StartCoroutine(BeatEventInvoker());
-    }
-
-    public void RestartRequest()
-    {
-        controls.Debug.PlayRecording.
     }
 }
 

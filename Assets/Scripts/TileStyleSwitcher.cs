@@ -24,11 +24,13 @@ public class TileStyleSwitcher : MonoBehaviour
     private void OnEnable()
     {
         controls.Enable();
+        BeatController.Instance.playbackRestartEvent += () => { ChangeTileStyle(false); };
     }
 
     private void OnDisable()
     {
         controls.Disable();
+        BeatController.Instance.playbackRestartEvent -= () => { ChangeTileStyle(false); };
     }
 
     private void ChangeTileStyle(bool isRecording)
