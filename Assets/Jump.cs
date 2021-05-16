@@ -34,7 +34,6 @@ public class Jump : MonoBehaviour
 
     private void JumpPerformed()
     {
-        Debug.Log(!jumpInputBuffered);
         if (!jumpInputBuffered)
             StartCoroutine(JumpInputBuffer());
     }
@@ -61,7 +60,6 @@ public class Jump : MonoBehaviour
 
     public IEnumerator JumpInputBuffer()
     {
-        Debug.Log("input buffered");
         jumpInputBuffered = true;
         yield return new WaitForSeconds(jumpInputBufferTime);
         jumpInputBuffered = false;
@@ -69,7 +67,6 @@ public class Jump : MonoBehaviour
 
     public IEnumerator JumpBeatBuffer()
     {
-        Debug.Log("beat buffered");
         jumpBeatBuffered = true;
         yield return new WaitForSeconds(jumpBeatBufferTime);
         jumpBeatBuffered = false;
