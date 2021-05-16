@@ -9,6 +9,7 @@ public class Jump : MonoBehaviour
     public float jumpForce;
     public float jumpInputBufferTime;
     public float jumpBeatBufferTime;
+    public bool isCalibration = false;
 
     Rigidbody2D rb;
     BasicMoveset controls;
@@ -81,7 +82,7 @@ public class Jump : MonoBehaviour
 
     public void SetPlayerInControl(bool toSet)
     {
-        if (toSet)
+        if (toSet || isCalibration)
         {
             controls.Enable();
         }

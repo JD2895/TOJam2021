@@ -9,6 +9,7 @@ public class SideMovement : MonoBehaviour
     public float sideMoveAcceleration;
     public float sideMoveMax;
     public float noInputFrictionMultiplier;
+    public bool isCailbration = false;
 
     Rigidbody2D rb;
     BasicMoveset controls;
@@ -103,7 +104,7 @@ public class SideMovement : MonoBehaviour
 
     public void SetPlayerInControl(bool toSet)
     {
-        if (toSet)
+        if (toSet || isCailbration)
         {
             controls.Enable();
         }

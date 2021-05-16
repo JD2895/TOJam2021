@@ -115,25 +115,9 @@
             "id": "d80ee12a-45ee-4afa-b04d-03855d408c4c",
             "actions": [
                 {
-                    "name": "ClearRecording",
-                    "type": "Button",
-                    "id": "cf87410c-23af-4483-b850-c25c96289a7e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "StartRecording",
                     "type": "Button",
                     "id": "aceae024-4f86-43f9-8fe9-a94ae1c55c6c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "StopRecording",
-                    "type": "Button",
-                    "id": "14eefeff-2af5-42a5-94f1-9f9eef03e001",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -147,9 +131,9 @@
                     "interactions": ""
                 },
                 {
-                    "name": "EndPlayback",
+                    "name": "Menu",
                     "type": "Button",
-                    "id": "55b077d2-123c-4eb1-91e3-f1f0c47778c7",
+                    "id": "39a5e34c-dbba-4986-bff7-e03deca354fb",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -170,7 +154,7 @@
                 {
                     "name": "",
                     "id": "080cb7a3-e969-49c9-baf1-1065cf325add",
-                    "path": "<Keyboard>/3",
+                    "path": "<Keyboard>/2",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -180,34 +164,12 @@
                 },
                 {
                     "name": "",
-                    "id": "5756712e-2b02-4518-8a7c-026fe8811a63",
-                    "path": "<Keyboard>/backspace",
+                    "id": "139d99e5-ead7-46e7-be65-deacb2dc783a",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "EndPlayback",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "cd9ed7f2-aa28-4a6d-9e57-6a01e273414e",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "StopRecording",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "70965413-c3e5-4310-8891-cf8705c752a7",
-                    "path": "<Keyboard>/backquote",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ClearRecording",
+                    "action": "Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

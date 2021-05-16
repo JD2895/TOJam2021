@@ -17,6 +17,7 @@ public class BeatController : MonoBehaviour
     public event Action jumpPadEvent;
     public event Action playerInputEvent;
     public event Action fireCannonEvent;
+    public event Action<int> beatEvent;
 
     AudioSource songSource;
     BasicMoveset controls;
@@ -30,7 +31,8 @@ public class BeatController : MonoBehaviour
     {
         if (_instance != null && _instance != this)
         {
-            Destroy(this.gameObject);
+            Destroy(_instance.gameObject);
+            _instance = this;
         }
         else
         {
@@ -59,7 +61,7 @@ public class BeatController : MonoBehaviour
         songSource.Play();
         beatEvents = currentSongData.beatEvents;
         secondsBetweenBeats = songSource.clip.length / 16f;
-        beatEventInvoker = StartCoroutine(BeatEventInvoker());
+        StartCoroutine(SongStartDelay());
     }
 
     public void RestartCurrentTrack(bool beatsOnly)
@@ -86,6 +88,7 @@ public class BeatController : MonoBehaviour
             while (curDiv != newDiv)
             {
                 nextEvent = beatEvents[curDiv];
+                beatEvent?.Invoke(curDiv);
                 switch (nextEvent)
                 {
                     case BeatEvent.None:
@@ -111,8 +114,32 @@ public class BeatController : MonoBehaviour
 
     private int GetSongPositionInt()
     {
-        int currentDivision = (int) Mathf.Floor(songSource.time / secondsBetweenBeats);
+        //int currentDivision = (int) Mathf.Floor(songSource.time / secondsBetweenBeats);
+        int currentDivision = (int) Mathf.Floor(InputCalibratedSourceTime() / secondsBetweenBeats);
         return currentDivision;
+    }
+
+    private float InputCalibratedSourceTime()
+    {
+        float calibratedTime = songSource.time + (SettingsController.Instance.InputCalibrationValue / 20f);
+
+        if (calibratedTime < 0)
+        {
+            float amountLessThanZero = calibratedTime;
+            calibratedTime = songSource.clip.length + amountLessThanZero;
+        }
+        else if (calibratedTime > songSource.clip.length)
+        {
+            float amountGreaterThanLength = calibratedTime - songSource.clip.length;
+            calibratedTime = amountGreaterThanLength;
+        }
+        return calibratedTime;
+    }
+
+    public IEnumerator SongStartDelay()
+    {
+        yield return new WaitForEndOfFrame();
+        beatEventInvoker = StartCoroutine(BeatEventInvoker());
     }
 }
 
