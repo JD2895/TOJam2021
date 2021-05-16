@@ -52,14 +52,6 @@ public class SettingsController : MonoBehaviour
         menuObject.SetActive(menuEnabled);
     }
 
-    /*
-    private void OnLevelWasLoaded(int level)
-    {
-        volumeSlider.value = volumeLevel;
-        inputCalSlider.value = _inputCalibration;
-        hazardToggle.isOn = _hazardCollisionEnabled;
-    }*/
-
     private void OnEnable()
     {
         controls.Enable();
