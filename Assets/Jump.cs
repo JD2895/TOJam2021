@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Jump : MonoBehaviour
 {
+    public bool playerInControl = false;
     public float jumpForce;
     public float jumpInputBufferTime;
     public float jumpBeatBufferTime;
@@ -76,5 +77,18 @@ public class Jump : MonoBehaviour
     {
         rb.velocity = new Vector2(rb.velocity.x, 0);
         rb.AddForce((Vector2.up * jumpForce), ForceMode2D.Impulse);
+    }
+
+    public void SetPlayerInControl(bool toSet)
+    {
+        if (toSet)
+        {
+            controls.Enable();
+        }
+        else
+        {
+            controls.Disable();
+        }
+        playerInControl = toSet;
     }
 }

@@ -14,6 +14,7 @@ public class MovementRecorder : MonoBehaviour
     // Setup
     BasicMoveset controls;
     SideMovement sidemoventController;
+    Jump jumpController;
     float startTime;
     float recordedTime;
     Vector3 startingPosition;
@@ -32,10 +33,10 @@ public class MovementRecorder : MonoBehaviour
         controls.Basic.Right.canceled += _ => RecordMove(ActionType.EndRight);
         
         controls.Debug.StartRecording.performed += _ => StartRecording();
-        controls.Debug.StopRecording.performed += _ => StopRecording();
+        //controls.Debug.StopRecording.performed += _ => StopRecording();
         controls.Debug.PlayRecording.performed += _ => PlaybackRecordedMoves();
-        controls.Debug.ClearRecording.performed += _ => ClearRecordedMoves();
-        controls.Debug.EndPlayback.performed += _ => EndPlayback();
+        //controls.Debug.ClearRecording.performed += _ => ClearRecordedMoves();
+        //controls.Debug.EndPlayback.performed += _ => EndPlayback();
     }
 
     private void OnEnable()
@@ -50,9 +51,17 @@ public class MovementRecorder : MonoBehaviour
 
     private void Start()
     {
+        if(playerObject == null)
+        {
+            playerObject = GameObject.Find("Player");
+        }
+
         startTime = Time.time;
         startingPosition = playerObject.transform.position;
         sidemoventController = playerObject.GetComponent<SideMovement>();
+        jumpController = playerObject.GetComponent<Jump>();
+
+        StartRecording();
     }
 
     private void RecordMove(ActionType newAction)
@@ -64,10 +73,16 @@ public class MovementRecorder : MonoBehaviour
         }
     }
 
+    private void ChangeControlState(bool isRecording)
+    {
+        sidemoventController?.SetPlayerInControl(isRecording);
+        jumpController?.SetPlayerInControl(!isRecording);
+    }
+
     private void PlaybackRecordedMoves()
     {
         Debug.Log("Starting Move Playback");
-        sidemoventController.SetPlayerInControl(false);
+        ChangeControlState(false);
         isRecording = false;
         playerObject.transform.position = startingPosition;
 
@@ -79,11 +94,29 @@ public class MovementRecorder : MonoBehaviour
         else
         {
             Debug.Log("No moves to play");
-            sidemoventController.SetPlayerInControl(true);
+            //ChangeControlState(true);
         }
 
     }
 
+    private void StartRecording()
+    {
+        // Prep
+        ClearRecordedMoves(false);
+        EndPlayback();
+        ChangeControlState(true);
+
+        Debug.Log("Starting Move Recording");
+        startTime = Time.time;
+
+        // Player Positioning
+        //startingPosition = playerObject.transform.position;
+        playerObject.transform.position = startingPosition;
+
+        isRecording = true;
+    }
+
+    #region Helper Functions
     public IEnumerator PlayingMoves()
     {
         playbackStartTime = Time.time;
@@ -117,7 +150,7 @@ public class MovementRecorder : MonoBehaviour
         }
 
         Debug.Log("Playback Ended");
-        sidemoventController.SetPlayerInControl(true);
+        //ChangeControlState(true);
     }
 
     private void ClearRecordedMoves(bool stopOtherActions = true)
@@ -131,22 +164,6 @@ public class MovementRecorder : MonoBehaviour
         recordedActions.Clear();
     }
 
-    private void StartRecording()
-    {
-        // Prep
-        ClearRecordedMoves(false);
-        EndPlayback();
-        
-        Debug.Log("Starting Move Recording");
-        startTime = Time.time;
-
-        // Player Positioning
-        //startingPosition = playerObject.transform.position;
-        playerObject.transform.position = startingPosition;
-
-        isRecording = true;
-    }
-
     public void EndPlayback()
     {
         if (isPlayingMoves)
@@ -154,10 +171,10 @@ public class MovementRecorder : MonoBehaviour
             Debug.Log("Ending playback");
             this.StopCoroutine(playbackRoutine);
             isPlayingMoves = false;
-            sidemoventController.SetPlayerInControl(true);
             //playerObject.transform.position = startingPosition;
         }
     }
+
     private void StopRecording()
     {
         if (isRecording)
@@ -166,7 +183,7 @@ public class MovementRecorder : MonoBehaviour
             isRecording = false;
         }
     }
-
+    #endregion
 
     struct ActionTime
     {

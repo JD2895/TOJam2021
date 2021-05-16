@@ -6,10 +6,29 @@ public class CannonProjectileBehavior : MonoBehaviour
 {
     public float speed;
     Rigidbody2D rb;
+    BasicMoveset controls;
+
+    private void Awake()
+    {
+        controls = new BasicMoveset();
+        controls.Debug.StartRecording.performed += _ => Destroy(this.gameObject);
+        controls.Debug.PlayRecording.performed += _ => Destroy(this.gameObject);
+    }
+
+    private void OnEnable()
+    {
+        controls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controls.Disable();
+    }
 
     void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
+        Destroy(this.gameObject, 10f);
     }
 
     private void FixedUpdate()

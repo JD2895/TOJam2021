@@ -38,8 +38,8 @@ public class BeatController : MonoBehaviour
         }
 
         controls = new BasicMoveset();
-        controls.Debug.StartRecording.performed += _ => RestartCurrentTrack();
-        controls.Debug.PlayRecording.performed += _ => RestartCurrentTrack();
+        controls.Debug.StartRecording.performed += _ => RestartCurrentTrack(true);
+        controls.Debug.PlayRecording.performed += _ => RestartCurrentTrack(false);
     }
 
     private void OnEnable()
@@ -62,10 +62,14 @@ public class BeatController : MonoBehaviour
         beatEventInvoker = StartCoroutine(BeatEventInvoker());
     }
 
-    public void RestartCurrentTrack()
+    public void RestartCurrentTrack(bool beatsOnly)
     {
         songSource.Stop();
         this.StopCoroutine(beatEventInvoker);
+        if (beatsOnly)
+            songSource.clip = currentSongData.beatsOnlyClip;
+        else
+            songSource.clip = currentSongData.fullAudioClip;
         songSource.Play();
         beatEventInvoker = StartCoroutine(BeatEventInvoker());
     }
