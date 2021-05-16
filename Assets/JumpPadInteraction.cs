@@ -14,6 +14,11 @@ public class JumpPadInteraction : MonoBehaviour
         BeatController.Instance.jumpPadEvent += CheckForJumpPad;
     }
 
+    private void OnDisable()
+    {
+        BeatController.Instance.jumpPadEvent -= CheckForJumpPad;
+    }
+
     void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();

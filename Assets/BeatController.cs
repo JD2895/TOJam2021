@@ -11,9 +11,12 @@ public class BeatController : MonoBehaviour
     private static BeatController _instance;
     public static BeatController Instance { get { return _instance; } }
 
-    public event Action jumpPadEvent;
     public SongData currentSongData;
     public float startOffset;
+
+    // Events
+    public event Action jumpPadEvent;
+    public event Action playerInputEvent;
 
     AudioSource songSource;
     BasicMoveset controls;
@@ -82,6 +85,9 @@ public class BeatController : MonoBehaviour
                 switch (nextEvent)
                 {
                     case BeatEvent.None:
+                        break;
+                    case BeatEvent.PlayerInput:
+                        playerInputEvent.Invoke();
                         break;
                     case BeatEvent.JumpPad:
                         jumpPadEvent.Invoke();
