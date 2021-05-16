@@ -8,6 +8,5 @@ public class SongData : ScriptableObject
 {
     public AudioClip beatsOnlyClip;
     public AudioClip fullAudioClip;
-    public int bpm;
     public BeatEvent[] beatEvents = new BeatEvent[] { };
 }
