@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class BeatTrackBeatPulse : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Animator beatEventAnimator;
+    public int beatNumber;
+
+    private void OnEnable()
     {
-        
+        BeatController.Instance.beatEvent += BeatEvent;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        BeatController.Instance.beatEvent -= BeatEvent;
+    }
+
+    private void BeatEvent(int detectedBeatNumber)
+    {
+        if (detectedBeatNumber == beatNumber)
+            beatEventAnimator.SetTrigger("BeatDetected");
     }
 }

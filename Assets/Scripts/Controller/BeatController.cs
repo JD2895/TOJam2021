@@ -12,6 +12,7 @@ public class BeatController : MonoBehaviour
     public static BeatController Instance { get { return _instance; } }
 
     public SongData currentSongData;
+    public BeatTrackSpriteController beatTrackSpriteController;
 
     // Events
     public event Action jumpPadEvent;
@@ -60,6 +61,7 @@ public class BeatController : MonoBehaviour
         songSource.clip = currentSongData.beatsOnlyClip;
         songSource.Play();
         beatEvents = currentSongData.beatEvents;
+        beatTrackSpriteController?.SetBeatSprites(beatEvents);
         secondsBetweenBeats = songSource.clip.length / 16f;
         StartCoroutine(SongStartDelay());
     }
