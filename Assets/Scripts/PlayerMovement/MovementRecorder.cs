@@ -84,6 +84,7 @@ public class MovementRecorder : MonoBehaviour
         ChangeControlState(false);
         isRecording = false;
         playerObject.transform.position = startingPosition;
+        playerObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
         if (recordedActions.Count > 0)
         {

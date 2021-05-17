@@ -3272,5 +3272,21 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4449534119634365288, guid: a27ba9791ee572141be8b70ef1a0f96f, type: 3}
+      propertyPath: m_text
+      value: When done, open the Settings Menu (Escape) and go to the Main Menu or
+        next level.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449534120656952742, guid: a27ba9791ee572141be8b70ef1a0f96f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 104.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449534120656952743, guid: a27ba9791ee572141be8b70ef1a0f96f, type: 3}
+      propertyPath: m_text
+      value: "\"BEAT EVENTS\" are generated automatically. \n\"INPUT EVENTS\" are
+        made by you (Up Arrow or Space).\nMake the \"event flashes\" (above) line
+        up as best as you can. \nThe ball (below) will jump whenever the events line
+        up sufficiently.\nOpen the Settings menu (Escape) to calibrate input."
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a27ba9791ee572141be8b70ef1a0f96f, type: 3}

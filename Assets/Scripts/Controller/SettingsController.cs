@@ -120,6 +120,7 @@ public class SettingsController : MonoBehaviour
 
     public void LoadLevel(string levelName)
     {
+        Time.timeScale = returningTimescale;
         StartCoroutine(LoadOutTransition(levelName));
     }
 
@@ -137,7 +138,7 @@ public class SettingsController : MonoBehaviour
         Time.timeScale = returningTimescale;
         int prevIndex = listOfLevels.IndexOf(SceneManager.GetActiveScene().name) - 1;
         if (prevIndex <= 0)
-            prevIndex = 0;
+            prevIndex = listOfLevels.Count - 1;
         StartCoroutine(LoadOutTransition(listOfLevels[prevIndex]));
     }
 
