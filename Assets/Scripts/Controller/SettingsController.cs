@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.Audio;
 
 public class SettingsController : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class SettingsController : MonoBehaviour
     bool menuEnabled = false;
     float returningTimescale = 1f;
 
+    //public AudioListener mainListener;
     public GameObject menuObject;
     public event Action levelFinishEvent;
 
@@ -50,6 +52,7 @@ public class SettingsController : MonoBehaviour
         volumeSlider.value = volumeLevel;
         inputCalSlider.value = _inputCalibration;
         hazardToggle.isOn = _hazardCollisionEnabled;
+        AudioListener.volume = volumeLevel;
 
         controls = new BasicMoveset();
         controls.Debug.Menu.performed += _ => ToggleMenu();
@@ -76,6 +79,7 @@ public class SettingsController : MonoBehaviour
     {
         volumeLevel = toSet;
         volumeSlider.value = volumeLevel;
+        AudioListener.volume = volumeLevel;
     }
 
     public void ChangeInputCalibrationSlider(float toSet)
@@ -92,6 +96,7 @@ public class SettingsController : MonoBehaviour
         volumeSlider.value = volumeLevel;
         inputCalSlider.value = _inputCalibration;
         hazardToggle.isOn = _hazardCollisionEnabled;
+        AudioListener.volume = volumeLevel;
 
         // Pause
         Time.timeScale = menuEnabled ? 0f : returningTimescale;
