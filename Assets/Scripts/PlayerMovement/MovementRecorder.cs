@@ -92,7 +92,7 @@ public class MovementRecorder : MonoBehaviour
         }
         else
         {
-            Debug.Log("No moves to play");
+            //Debug.Log("No moves to play");
         }
 
     }
@@ -146,12 +146,12 @@ public class MovementRecorder : MonoBehaviour
             }
         }
 
-        Debug.Log("Playback Ended");
+        //Debug.Log("Playback Ended");
     }
 
     private void ClearRecordedMoves(bool stopOtherActions = true)
     {
-        Debug.Log("Clearing Recorded Moves");
+        //Debug.Log("Clearing Recorded Moves");
         if (stopOtherActions)
         {
             StopRecording();
@@ -164,7 +164,7 @@ public class MovementRecorder : MonoBehaviour
     {
         if (isPlayingMoves)
         {
-            Debug.Log("Ending playback");
+            //Debug.Log("Ending playback");
             this.StopCoroutine(playbackRoutine);
             isPlayingMoves = false;
         }
@@ -174,7 +174,7 @@ public class MovementRecorder : MonoBehaviour
     {
         if (isRecording)
         {
-            Debug.Log("Stopping Recording");
+            //Debug.Log("Stopping Recording");
             isRecording = false;
         }
     }

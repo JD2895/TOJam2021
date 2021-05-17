@@ -7,6 +7,7 @@ public class CannonProjectileBehavior : MonoBehaviour
     public float speed;
     Rigidbody2D rb;
     BasicMoveset controls;
+    public SpriteRenderer sprRend;
 
     private void Awake()
     {
@@ -18,23 +19,32 @@ public class CannonProjectileBehavior : MonoBehaviour
     private void OnEnable()
     {
         controls.Enable();
-        BeatController.Instance.playbackRestartEvent += () => { Destroy(this.gameObject); };
+        BeatController.Instance.playbackRestartEvent += ToDestroy;
     }
 
     private void OnDisable()
     {
         controls.Disable();
-        BeatController.Instance.playbackRestartEvent -= () => { Destroy(this.gameObject); };
+        BeatController.Instance.playbackRestartEvent -= ToDestroy;
     }
 
     void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
-        Destroy(this.gameObject, 10f);
     }
 
     private void FixedUpdate()
     {
         rb.MovePosition(this.transform.position + (this.transform.up * speed * Time.fixedDeltaTime));
+    }
+
+    public void ToDestroy()
+    {
+        Destroy(this.gameObject);
+    }
+
+    public void SetSprite(Sprite toSet)
+    {
+        sprRend.sprite = toSet;
     }
 }

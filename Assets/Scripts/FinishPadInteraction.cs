@@ -11,6 +11,7 @@ public class FinishPadInteraction : MonoBehaviour
     Rigidbody2D rb;
     MovementRecorder movementRecorder;
     SideMovement sideMovement;
+    Jump jump;
     ArtificialGravity artificialGravity;
     BasicMoveset controls;
 
@@ -46,6 +47,7 @@ public class FinishPadInteraction : MonoBehaviour
         movementRecorder = this.GetComponentInChildren<MovementRecorder>();
         sideMovement = this.GetComponent<SideMovement>();
         artificialGravity = this.GetComponent<ArtificialGravity>();
+        jump = this.GetComponent<Jump>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -55,7 +57,10 @@ public class FinishPadInteraction : MonoBehaviour
             //rb.bodyType = RigidbodyType2D.Static;
             mainCollider.enabled = false;
             movementRecorder.enabled = false;
-            sideMovement.enabled = false;
+            if (sideMovement != null)
+                sideMovement.enabled = false;
+            if (jump != null)
+                jump.enabled = false;
             //artificialGravity.enabled = false;
             StartCoroutine(SlightDelayBeforeFinish());
         }

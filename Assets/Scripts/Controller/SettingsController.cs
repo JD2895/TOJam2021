@@ -28,7 +28,7 @@ public class SettingsController : MonoBehaviour
     static float volumeLevel = 0.5f;
 
     // Input Calibration
-    static float _inputCalibration = 0.0f;
+    static float _inputCalibration = 3.0f;
     public float InputCalibrationValue { get { return _inputCalibration; } }
 
     // UI
@@ -99,6 +99,7 @@ public class SettingsController : MonoBehaviour
 
     public void RestartLevel()
     {
+        Time.timeScale = returningTimescale;
         StartCoroutine(LoadOutTransition(SceneManager.GetActiveScene().name));
     }
 
@@ -121,7 +122,7 @@ public class SettingsController : MonoBehaviour
     {
         Time.timeScale = returningTimescale;
         int nextIndex = listOfLevels.IndexOf(SceneManager.GetActiveScene().name) + 1;
-        if (nextIndex >= listOfLevels.Count - 1)
+        if (nextIndex > listOfLevels.Count - 1)
             nextIndex = 0;
         StartCoroutine(LoadOutTransition(listOfLevels[nextIndex]));
     }

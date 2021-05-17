@@ -40,6 +40,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4720490393030418071}
   - component: {fileID: 4720490393030418070}
+  - component: {fileID: 4699048593816225535}
+  - component: {fileID: 520566619}
   m_Layer: 0
   m_Name: Cannon Sprite
   m_TagString: Untagged
@@ -112,6 +114,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4699048593816225535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4720490393030418068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb424308a0dd4c54a9d48f8946aab7b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beatEventAnimator: {fileID: 520566619}
+--- !u!95 &520566619
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4720490393030418068}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7ded7eb2d9d3f0d49a49386aa7fbde88, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4720490394527424394
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,3 +193,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cannonprojectilePrefab: {fileID: 2678383328766428042, guid: c614e0bbcb66e2f48904d59a5c40e34d, type: 3}
   projectileSpawnPoint: {fileID: 762743356163329680}
+  cannonBallSprites:
+  - {fileID: 462025214650545263, guid: 1ff4f74664861b64fac26521c5a58af3, type: 3}
+  - {fileID: -8328726113192590463, guid: 1ff4f74664861b64fac26521c5a58af3, type: 3}

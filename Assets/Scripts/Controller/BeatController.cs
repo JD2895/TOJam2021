@@ -48,11 +48,6 @@ public class BeatController : MonoBehaviour
         controls.Debug.PlayRecording.performed += _ => RestartCurrentTrack(false);
     }
 
-    public void RestartRequest()
-    {
-        playbackRestartEvent?.Invoke();
-    }
-
     private void OnEnable()
     {
         controls.Enable();
@@ -145,6 +140,12 @@ public class BeatController : MonoBehaviour
             calibratedTime = amountGreaterThanLength;
         }
         return calibratedTime;
+    }
+
+    public void RestartRequest()
+    {
+        playbackRestartEvent?.Invoke();
+        RestartCurrentTrack(false);
     }
 
     public IEnumerator SongStartDelay()
