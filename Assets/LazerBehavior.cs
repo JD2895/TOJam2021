@@ -23,14 +23,14 @@ public class LazerBehavior : MonoBehaviour
     private void OnEnable()
     {
         controls.Enable();
-        BeatController.Instance.fireCannonEvent += FireLazer;
+        BeatController.Instance.hazardEvent += FireLazer;
         BeatController.Instance.playbackRestartEvent += SetLazerIdle;
     }
 
     private void OnDisable()
     {
         controls.Disable();
-        BeatController.Instance.fireCannonEvent -= FireLazer;
+        BeatController.Instance.hazardEvent -= FireLazer;
         BeatController.Instance.playbackRestartEvent -= SetLazerIdle;
     }
 

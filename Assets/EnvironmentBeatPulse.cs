@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JumpBeatPulse : MonoBehaviour
+public class EnvironmentBeatPulse : MonoBehaviour
 {
     public Animator beatEventAnimator;
 
     private void OnEnable()
     {
-        BeatController.Instance.jumpPadEvent += JumpPadBeatEvent;
+        BeatController.Instance.environmentEvent += EnvironmentBeatEvent;
     }
 
     private void OnDisable()
     {
-        BeatController.Instance.jumpPadEvent -= JumpPadBeatEvent;
+        BeatController.Instance.environmentEvent -= EnvironmentBeatEvent;
     }
 
-    private void JumpPadBeatEvent()
+    private void EnvironmentBeatEvent()
     {
         beatEventAnimator.SetTrigger("JumpPadBeatDetected");
     }

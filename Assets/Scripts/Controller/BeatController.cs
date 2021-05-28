@@ -17,9 +17,9 @@ public class BeatController : MonoBehaviour
     public BeatTrackSpriteController beatTrackSpriteController;
 
     // Events
-    public event Action jumpPadEvent;
+    public event Action environmentEvent;
     public event Action playerInputEvent;
-    public event Action fireCannonEvent;
+    public event Action hazardEvent;
     public event Action<int> beatEvent;
     public event Action playbackRestartEvent;
 
@@ -99,14 +99,14 @@ public class BeatController : MonoBehaviour
                 {
                     case BeatEvent.None:
                         break;
-                    case BeatEvent.FireCannon:
-                        fireCannonEvent?.Invoke();
+                    case BeatEvent.Hazard:
+                        hazardEvent?.Invoke();
                         break;
                     case BeatEvent.PlayerInput:
                         playerInputEvent?.Invoke();
                         break;
-                    case BeatEvent.JumpPad:
-                        jumpPadEvent?.Invoke();
+                    case BeatEvent.Environment:
+                        environmentEvent?.Invoke();
                         break;
                 }
                 curDiv += 1;
@@ -159,6 +159,6 @@ public enum BeatEvent
 {
     None,
     PlayerInput,
-    FireCannon,
-    JumpPad
+    Hazard,
+    Environment
 }

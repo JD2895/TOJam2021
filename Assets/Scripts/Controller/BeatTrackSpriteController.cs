@@ -18,13 +18,13 @@ public class BeatTrackSpriteController : MonoBehaviour
             {
                 case BeatEvent.None:
                     break;
-                case BeatEvent.JumpPad:
+                case BeatEvent.Environment:
                     SetSprite(i, jumpPadBeatSprites);
                     break;
                 case BeatEvent.PlayerInput:
                     SetSprite(i, playerInputBeatSprites);
                     break;
-                case BeatEvent.FireCannon:
+                case BeatEvent.Hazard:
                     SetSprite(i, cannonBeatSprites);
                     break;
             }

@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireCannonBeatPulse : MonoBehaviour
+public class HazardBeatPulse : MonoBehaviour
 {
     public Animator beatEventAnimator;
 
     private void OnEnable()
     {
-        BeatController.Instance.fireCannonEvent += FireCannonBeatEvent;
+        BeatController.Instance.hazardEvent += FireCannonBeatEvent;
     }
 
     private void OnDisable()
     {
-        BeatController.Instance.fireCannonEvent -= FireCannonBeatEvent;
+        BeatController.Instance.hazardEvent -= FireCannonBeatEvent;
     }
 
     private void FireCannonBeatEvent()

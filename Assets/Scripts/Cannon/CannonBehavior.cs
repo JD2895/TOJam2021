@@ -26,13 +26,13 @@ public class CannonBehavior : MonoBehaviour
     private void OnEnable()
     {
         controls.Enable();
-        BeatController.Instance.fireCannonEvent += FireCannon;
+        BeatController.Instance.hazardEvent += FireCannon;
     }
 
     private void OnDisable()
     {
         controls.Disable();
-        BeatController.Instance.fireCannonEvent -= FireCannon;
+        BeatController.Instance.hazardEvent -= FireCannon;
     }
 
     private void FireCannon()

@@ -11,12 +11,12 @@ public class JumpPadInteraction : MonoBehaviour
 
     private void OnEnable()
     {
-        BeatController.Instance.jumpPadEvent += CheckForJumpPad;
+        BeatController.Instance.environmentEvent += CheckForJumpPad;
     }
 
     private void OnDisable()
     {
-        BeatController.Instance.jumpPadEvent -= CheckForJumpPad;
+        BeatController.Instance.environmentEvent -= CheckForJumpPad;
     }
 
     void Start()
