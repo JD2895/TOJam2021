@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class SideMovement : MonoBehaviour
 {
-    public bool playerInControl = true;
+    bool playerInControl = true;
     public float sideMoveAcceleration;
     public float sideMoveMax;
     public float noInputFrictionMultiplier;

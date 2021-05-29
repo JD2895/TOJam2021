@@ -18,6 +18,6 @@ public class HazardBeatPulse : MonoBehaviour
 
     private void FireCannonBeatEvent()
     {
-        beatEventAnimator.SetTrigger("FireCannonBeatDetected");
+        beatEventAnimator.SetTrigger("HazardBeatDetected");
     }
 }

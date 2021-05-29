@@ -35,7 +35,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: FireCannonBeatDetected
+    m_ConditionEvent: HazardBeatDetected
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 287389661121761887}
@@ -86,7 +86,7 @@ AnimatorController:
   m_Name: Cannon Sprite
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: FireCannonBeatDetected
+  - m_Name: HazardBeatDetected
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0

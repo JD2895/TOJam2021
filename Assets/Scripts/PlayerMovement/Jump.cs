@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Jump : MonoBehaviour
 {
-    public bool playerInControl = false;
+    bool playerInControl = false;
     public float jumpForce;
     public float jumpInputBufferTime;
     public float jumpBeatBufferTime;
@@ -19,7 +19,8 @@ public class Jump : MonoBehaviour
     private void Awake()
     {
         controls = new BasicMoveset();
-        controls.Basic.Jump.performed += _ => JumpPerformed();
+        //controls.Basic.Jump.performed += _ => JumpPerformed();
+        controls.Basic.Jump.performed += _ => Debug.Log("HELLO!!!????");
     }
 
     private void OnEnable()
@@ -36,7 +37,10 @@ public class Jump : MonoBehaviour
 
     private void JumpPerformed()
     {
-        if (!jumpInputBuffered)
+        Debug.Log("playerInControl");
+        if (playerInControl)
+            ApplyJumpForce();
+        else if (!jumpInputBuffered)
             StartCoroutine(JumpInputBuffer());
     }
 

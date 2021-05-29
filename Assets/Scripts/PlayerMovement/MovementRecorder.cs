@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 public class MovementRecorder : MonoBehaviour
 {
     public GameObject playerObject;
+    public bool recordSideMovement = true;
+    public bool recordJump = false;
 
     // Controllers
     bool isRecording = false;
@@ -31,6 +33,7 @@ public class MovementRecorder : MonoBehaviour
         controls.Basic.Left.canceled += _ => RecordMove(ActionType.EndLeft);
         controls.Basic.Right.performed += _ => RecordMove(ActionType.StartRight);
         controls.Basic.Right.canceled += _ => RecordMove(ActionType.EndRight);
+        controls.Basic.Jump.performed += _ => RecordMove(ActionType.Jump);
         
         controls.Debug.StartRecording.performed += _ => StartRecording();
         controls.Debug.PlayRecording.performed += _ => PlaybackRecordedMoves();
@@ -59,6 +62,7 @@ public class MovementRecorder : MonoBehaviour
         startingPosition = playerObject.transform.position;
         sidemoventController = playerObject.GetComponent<SideMovement>();
         jumpController = playerObject.GetComponent<Jump>();
+        ChangeControlState(true);
 
         StartRecording();
     }
@@ -67,6 +71,12 @@ public class MovementRecorder : MonoBehaviour
     {
         if (isRecording)
         {
+            if (newAction == ActionType.Jump && !recordJump)    // Don't record move if we aren't recording jump and the move was a jump
+            {
+                return;
+            }
+            if (newAction != ActionType.Jump && !recordSideMovement)    // Don't record move if we aren't recording side movement and the move was side movement
+                return;
             recordedTime = Time.time - startTime;
             recordedActions.Add(new ActionTime(newAction, recordedTime));
         }
@@ -74,8 +84,8 @@ public class MovementRecorder : MonoBehaviour
 
     private void ChangeControlState(bool isRecording)
     {
-        sidemoventController?.SetPlayerInControl(isRecording);
-        jumpController?.SetPlayerInControl(!isRecording);
+        sidemoventController?.SetPlayerInControl(isRecording && recordSideMovement);
+        jumpController?.SetPlayerInControl(isRecording && recordJump);
     }
 
     private void PlaybackRecordedMoves()
@@ -128,16 +138,19 @@ public class MovementRecorder : MonoBehaviour
                     switch (nextMove.action)
                     {
                         case ActionType.StartLeft:
-                            sidemoventController.MoveLeftStart();
+                            sidemoventController?.MoveLeftStart();
                             break;
                         case ActionType.EndLeft:
-                            sidemoventController.MoveLeftEnd();
+                            sidemoventController?.MoveLeftEnd();
                             break;
                         case ActionType.StartRight:
-                            sidemoventController.MoveRightStart();
+                            sidemoventController?.MoveRightStart();
                             break;
                         case ActionType.EndRight:
-                            sidemoventController.MoveRightEnd();
+                            sidemoventController?.MoveRightEnd();
+                            break;
+                        case ActionType.Jump:
+                            jumpController?.ApplyJumpForce();
                             break;
                     }
                     break;
@@ -198,6 +211,7 @@ public class MovementRecorder : MonoBehaviour
         StartLeft,
         EndLeft,
         StartRight,
-        EndRight
+        EndRight,
+        Jump
     }
 }

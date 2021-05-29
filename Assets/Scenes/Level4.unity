@@ -584,7 +584,7 @@ BoxCollider2D:
     border: {x: 0.6875, y: 0, z: 0, w: 0}
     pivot: {x: 1, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 12, y: 1}
+    newSize: {x: 6, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 1
     adaptiveTiling: 0
@@ -637,7 +637,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 12, y: 1}
+  m_Size: {x: 6, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2748,15 +2748,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1138075591}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.5, y: -1.5, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 2, y: 3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1824656310}
   - {fileID: 663536758}
   m_Father: {fileID: 0}
   m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!114 &1138075593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5137,6 +5137,7 @@ GameObject:
   - component: {fileID: 1824656310}
   - component: {fileID: 1824656311}
   - component: {fileID: 1824656312}
+  - component: {fileID: 1824656313}
   m_Layer: 0
   m_Name: Lazer Block Sprite
   m_TagString: Untagged
@@ -5228,6 +5229,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1824656313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824656309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb424308a0dd4c54a9d48f8946aab7b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beatEventAnimator: {fileID: 1824656312}
 --- !u!1001 &1947197819
 PrefabInstance:
   m_ObjectHideFlags: 0
