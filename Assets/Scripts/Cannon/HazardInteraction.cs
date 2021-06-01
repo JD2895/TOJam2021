@@ -52,7 +52,6 @@ public class HazardInteraction : MonoBehaviour
     {
         if (collision.CompareTag("Hazard") && isInteractable && SettingsController.Instance.HazardCollisionEnabled)
         {
-            Debug.Log("DED");
             BeatController.Instance.RestartRequest();
             /*rb.bodyType = RigidbodyType2D.Static;
             mainCollider.enabled = false;

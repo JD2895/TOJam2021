@@ -62,8 +62,6 @@ public class MovementRecorder : MonoBehaviour
         startingPosition = playerObject.transform.position;
         sidemoventController = playerObject.GetComponent<SideMovement>();
         jumpController = playerObject.GetComponent<Jump>();
-        ChangeControlState(true);
-
         StartRecording();
     }
 
@@ -84,13 +82,19 @@ public class MovementRecorder : MonoBehaviour
 
     private void ChangeControlState(bool isRecording)
     {
-        sidemoventController?.SetPlayerInControl(isRecording && recordSideMovement);
-        jumpController?.SetPlayerInControl(isRecording && recordJump);
+        // Base control state on whether or not the game is in record mode or not
+        bool toSet; 
+
+        toSet = recordSideMovement ? (isRecording && recordSideMovement) : (!isRecording && !recordSideMovement);
+        sidemoventController?.SetPlayerInControl(toSet);
+
+        toSet = recordJump ? (isRecording && recordJump) : (!isRecording && !recordJump);
+        jumpController?.SetPlayerInControl(toSet);
     }
 
     private void PlaybackRecordedMoves()
     {
-        Debug.Log("Starting Move Playback");
+        //Debug.Log("Starting Move Playback");
         ChangeControlState(false);
         isRecording = false;
         playerObject.transform.position = startingPosition;
@@ -115,7 +119,7 @@ public class MovementRecorder : MonoBehaviour
         EndPlayback();
         ChangeControlState(true);
 
-        Debug.Log("Starting Move Recording");
+        //Debug.Log("Starting Move Recording");
         startTime = Time.time;
 
         // Player Positioning

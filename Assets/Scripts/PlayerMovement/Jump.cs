@@ -15,12 +15,15 @@ public class Jump : MonoBehaviour
     BasicMoveset controls;
     bool jumpInputBuffered = false;
     bool jumpBeatBuffered = false;
+    bool isRecording = true;
 
     private void Awake()
     {
         controls = new BasicMoveset();
-        //controls.Basic.Jump.performed += _ => JumpPerformed();
-        controls.Basic.Jump.performed += _ => Debug.Log("HELLO!!!????");
+        controls.Basic.Jump.performed += _ => JumpPerformed();
+
+        controls.Debug.StartRecording.performed += _ => ChangeRecordState(true);
+        controls.Debug.PlayRecording.performed += _ => ChangeRecordState(false);
     }
 
     private void OnEnable()
@@ -37,10 +40,9 @@ public class Jump : MonoBehaviour
 
     private void JumpPerformed()
     {
-        Debug.Log("playerInControl");
-        if (playerInControl)
+        if (isRecording && playerInControl)
             ApplyJumpForce();
-        else if (!jumpInputBuffered)
+        else if (!isRecording && !jumpInputBuffered)
             StartCoroutine(JumpInputBuffer());
     }
 
@@ -88,12 +90,17 @@ public class Jump : MonoBehaviour
     {
         if (toSet || isCalibration)
         {
-            controls.Enable();
+            controls.Basic.Enable();
         }
         else
         {
-            controls.Disable();
+            controls.Basic.Disable();
         }
         playerInControl = toSet;
+    }
+
+    private void ChangeRecordState(bool toSet)
+    {
+        isRecording = toSet;
     }
 }
