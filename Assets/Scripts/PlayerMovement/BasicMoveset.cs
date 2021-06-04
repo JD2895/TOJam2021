@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/PlayerMovement/BasicMoveset.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/PlayerMovement/BasicMoveset.inputactions'
 
 using System;
 using System.Collections;
@@ -38,6 +38,30 @@ public class @BasicMoveset : IInputActionCollection, IDisposable
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""edf72d9a-3dd0-481c-835d-e2438d7494ed"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""1764a6fb-b671-4aab-9f71-09f59bd763d4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Dash Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""e3d2aca5-0a2c-45ff-9a6c-ecec7de76c53"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Dash Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""5554893d-e922-4d5c-b2f1-e555ba87ac91"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -120,6 +144,72 @@ public class @BasicMoveset : IInputActionCollection, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d029ce00-8378-4299-b188-1c527314bece"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1b452058-9ac9-47e5-bf37-211f2b0ae50d"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8b054004-9906-4075-bda1-ead71c1234ae"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7056a851-e567-4465-be9f-4038c516dee6"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""62e5c666-c715-4dce-9675-4dc1df67d2ba"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""46cf3b48-28d2-4108-83c9-c8a8095d7635"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -196,6 +286,9 @@ public class @BasicMoveset : IInputActionCollection, IDisposable
         m_Basic_Left = m_Basic.FindAction("Left", throwIfNotFound: true);
         m_Basic_Right = m_Basic.FindAction("Right", throwIfNotFound: true);
         m_Basic_Jump = m_Basic.FindAction("Jump", throwIfNotFound: true);
+        m_Basic_Fire = m_Basic.FindAction("Fire", throwIfNotFound: true);
+        m_Basic_DashLeft = m_Basic.FindAction("Dash Left", throwIfNotFound: true);
+        m_Basic_DashRight = m_Basic.FindAction("Dash Right", throwIfNotFound: true);
         // Debug
         m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
         m_Debug_StartRecording = m_Debug.FindAction("StartRecording", throwIfNotFound: true);
@@ -253,6 +346,9 @@ public class @BasicMoveset : IInputActionCollection, IDisposable
     private readonly InputAction m_Basic_Left;
     private readonly InputAction m_Basic_Right;
     private readonly InputAction m_Basic_Jump;
+    private readonly InputAction m_Basic_Fire;
+    private readonly InputAction m_Basic_DashLeft;
+    private readonly InputAction m_Basic_DashRight;
     public struct BasicActions
     {
         private @BasicMoveset m_Wrapper;
@@ -260,6 +356,9 @@ public class @BasicMoveset : IInputActionCollection, IDisposable
         public InputAction @Left => m_Wrapper.m_Basic_Left;
         public InputAction @Right => m_Wrapper.m_Basic_Right;
         public InputAction @Jump => m_Wrapper.m_Basic_Jump;
+        public InputAction @Fire => m_Wrapper.m_Basic_Fire;
+        public InputAction @DashLeft => m_Wrapper.m_Basic_DashLeft;
+        public InputAction @DashRight => m_Wrapper.m_Basic_DashRight;
         public InputActionMap Get() { return m_Wrapper.m_Basic; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -278,6 +377,15 @@ public class @BasicMoveset : IInputActionCollection, IDisposable
                 @Jump.started -= m_Wrapper.m_BasicActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_BasicActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_BasicActionsCallbackInterface.OnJump;
+                @Fire.started -= m_Wrapper.m_BasicActionsCallbackInterface.OnFire;
+                @Fire.performed -= m_Wrapper.m_BasicActionsCallbackInterface.OnFire;
+                @Fire.canceled -= m_Wrapper.m_BasicActionsCallbackInterface.OnFire;
+                @DashLeft.started -= m_Wrapper.m_BasicActionsCallbackInterface.OnDashLeft;
+                @DashLeft.performed -= m_Wrapper.m_BasicActionsCallbackInterface.OnDashLeft;
+                @DashLeft.canceled -= m_Wrapper.m_BasicActionsCallbackInterface.OnDashLeft;
+                @DashRight.started -= m_Wrapper.m_BasicActionsCallbackInterface.OnDashRight;
+                @DashRight.performed -= m_Wrapper.m_BasicActionsCallbackInterface.OnDashRight;
+                @DashRight.canceled -= m_Wrapper.m_BasicActionsCallbackInterface.OnDashRight;
             }
             m_Wrapper.m_BasicActionsCallbackInterface = instance;
             if (instance != null)
@@ -291,6 +399,15 @@ public class @BasicMoveset : IInputActionCollection, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Fire.started += instance.OnFire;
+                @Fire.performed += instance.OnFire;
+                @Fire.canceled += instance.OnFire;
+                @DashLeft.started += instance.OnDashLeft;
+                @DashLeft.performed += instance.OnDashLeft;
+                @DashLeft.canceled += instance.OnDashLeft;
+                @DashRight.started += instance.OnDashRight;
+                @DashRight.performed += instance.OnDashRight;
+                @DashRight.canceled += instance.OnDashRight;
             }
         }
     }
@@ -349,6 +466,9 @@ public class @BasicMoveset : IInputActionCollection, IDisposable
         void OnLeft(InputAction.CallbackContext context);
         void OnRight(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnFire(InputAction.CallbackContext context);
+        void OnDashLeft(InputAction.CallbackContext context);
+        void OnDashRight(InputAction.CallbackContext context);
     }
     public interface IDebugActions
     {

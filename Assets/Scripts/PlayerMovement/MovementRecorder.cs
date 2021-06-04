@@ -8,6 +8,7 @@ public class MovementRecorder : MonoBehaviour
     public GameObject playerObject;
     public bool recordSideMovement = true;
     public bool recordJump = false;
+    public bool recordDash = false;
 
     // Controllers
     bool isRecording = false;
@@ -17,6 +18,7 @@ public class MovementRecorder : MonoBehaviour
     BasicMoveset controls;
     SideMovement sidemoventController;
     Jump jumpController;
+    Dash dashController;
     float startTime;
     float recordedTime;
     Vector3 startingPosition;
@@ -34,7 +36,9 @@ public class MovementRecorder : MonoBehaviour
         controls.Basic.Right.performed += _ => RecordMove(ActionType.StartRight);
         controls.Basic.Right.canceled += _ => RecordMove(ActionType.EndRight);
         controls.Basic.Jump.performed += _ => RecordMove(ActionType.Jump);
-        
+        controls.Basic.DashLeft.performed += _ => RecordMove(ActionType.DashLeft);
+        controls.Basic.DashRight.performed += _ => RecordMove(ActionType.DashRight);
+
         controls.Debug.StartRecording.performed += _ => StartRecording();
         controls.Debug.PlayRecording.performed += _ => PlaybackRecordedMoves();
     }
@@ -62,6 +66,7 @@ public class MovementRecorder : MonoBehaviour
         startingPosition = playerObject.transform.position;
         sidemoventController = playerObject.GetComponent<SideMovement>();
         jumpController = playerObject.GetComponent<Jump>();
+        dashController = playerObject.GetComponent<Dash>();
         StartRecording();
     }
 
@@ -90,6 +95,9 @@ public class MovementRecorder : MonoBehaviour
 
         toSet = recordJump ? (isRecording && recordJump) : (!isRecording && !recordJump);
         jumpController?.SetPlayerInControl(toSet);
+
+        toSet = recordDash ? (isRecording && recordDash) : (!isRecording && !recordDash);
+        dashController?.SetPlayerInControl(toSet);
     }
 
     private void PlaybackRecordedMoves()
@@ -156,6 +164,12 @@ public class MovementRecorder : MonoBehaviour
                         case ActionType.Jump:
                             jumpController?.ApplyJumpForce();
                             break;
+                        case ActionType.DashLeft:
+                            dashController?.ApplyDash(-1f);
+                            break;
+                        case ActionType.DashRight:
+                            dashController?.ApplyDash(1f);
+                            break;
                     }
                     break;
                 }
@@ -216,6 +230,8 @@ public class MovementRecorder : MonoBehaviour
         EndLeft,
         StartRight,
         EndRight,
-        Jump
+        Jump,
+        DashLeft,
+        DashRight
     }
 }
