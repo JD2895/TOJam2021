@@ -52,6 +52,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Stunt",
+                    "type": "Button",
+                    "id": "d49324d4-af5a-4881-8450-f6d6229e38a4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -123,17 +131,6 @@
                 },
                 {
                     "name": "",
-                    "id": "38c7f747-aaba-41b8-b6e5-2942c953643a",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "d029ce00-8378-4299-b188-1c527314bece",
                     "path": "<Keyboard>/a",
                     "interactions": "",
@@ -195,6 +192,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Dash Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a10be0f3-ecf1-4fa2-a496-8c70a31b5f2b",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Stunt",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
