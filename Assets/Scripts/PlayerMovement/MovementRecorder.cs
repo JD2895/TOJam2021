@@ -74,11 +74,11 @@ public class MovementRecorder : MonoBehaviour
     {
         if (isRecording)
         {
-            if (newAction == ActionType.Jump && !recordJump)    // Don't record move if we aren't recording jump and the move was a jump
-            {
+            if (!recordJump && newAction == ActionType.Jump)    // Don't record move if we aren't recording jump and the move was a jump
                 return;
-            }
-            if (newAction != ActionType.Jump && !recordSideMovement)    // Don't record move if we aren't recording side movement and the move was side movement
+            if (!recordSideMovement && (newAction == ActionType.StartLeft || newAction == ActionType.EndLeft || newAction == ActionType.StartRight || newAction == ActionType.EndRight))    // Don't record move if we aren't recording side movement and the move was side movement
+                return;
+            if (!recordDash && (newAction == ActionType.DashRight || newAction == ActionType.DashLeft))
                 return;
             recordedTime = Time.time - startTime;
             recordedActions.Add(new ActionTime(newAction, recordedTime));

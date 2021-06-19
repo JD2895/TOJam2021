@@ -30,14 +30,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Fire",
-                    "type": "Button",
-                    "id": "1764a6fb-b671-4aab-9f71-09f59bd763d4",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Dash Left",
                     "type": "Button",
                     "id": "e3d2aca5-0a2c-45ff-9a6c-ecec7de76c53",
@@ -131,30 +123,8 @@
                 },
                 {
                     "name": "",
-                    "id": "d029ce00-8378-4299-b188-1c527314bece",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Fire",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "1b452058-9ac9-47e5-bf37-211f2b0ae50d",
-                    "path": "<Keyboard>/backspace",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Fire",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "8b054004-9906-4075-bda1-ead71c1234ae",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/z",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -176,7 +146,7 @@
                 {
                     "name": "",
                     "id": "62e5c666-c715-4dce-9675-4dc1df67d2ba",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -198,7 +168,29 @@
                 {
                     "name": "",
                     "id": "a10be0f3-ecf1-4fa2-a496-8c70a31b5f2b",
-                    "path": "",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Stunt",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b5c73635-2983-45db-969e-20051daef155",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Stunt",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8ed92893-ba28-42eb-bbe1-cb925e751236",
+                    "path": "<Keyboard>/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

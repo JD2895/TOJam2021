@@ -43,14 +43,6 @@ public class @BasicMoveset : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Fire"",
-                    ""type"": ""Button"",
-                    ""id"": ""1764a6fb-b671-4aab-9f71-09f59bd763d4"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""Dash Left"",
                     ""type"": ""Button"",
                     ""id"": ""e3d2aca5-0a2c-45ff-9a6c-ecec7de76c53"",
@@ -144,30 +136,8 @@ public class @BasicMoveset : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d029ce00-8378-4299-b188-1c527314bece"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1b452058-9ac9-47e5-bf37-211f2b0ae50d"",
-                    ""path"": ""<Keyboard>/backspace"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""8b054004-9906-4075-bda1-ead71c1234ae"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Keyboard>/z"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -189,7 +159,7 @@ public class @BasicMoveset : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""62e5c666-c715-4dce-9675-4dc1df67d2ba"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/c"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -211,7 +181,29 @@ public class @BasicMoveset : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""a10be0f3-ecf1-4fa2-a496-8c70a31b5f2b"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Stunt"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b5c73635-2983-45db-969e-20051daef155"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Stunt"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8ed92893-ba28-42eb-bbe1-cb925e751236"",
+                    ""path"": ""<Keyboard>/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -294,7 +286,6 @@ public class @BasicMoveset : IInputActionCollection, IDisposable
         m_Basic_Left = m_Basic.FindAction("Left", throwIfNotFound: true);
         m_Basic_Right = m_Basic.FindAction("Right", throwIfNotFound: true);
         m_Basic_Jump = m_Basic.FindAction("Jump", throwIfNotFound: true);
-        m_Basic_Fire = m_Basic.FindAction("Fire", throwIfNotFound: true);
         m_Basic_DashLeft = m_Basic.FindAction("Dash Left", throwIfNotFound: true);
         m_Basic_DashRight = m_Basic.FindAction("Dash Right", throwIfNotFound: true);
         m_Basic_Stunt = m_Basic.FindAction("Stunt", throwIfNotFound: true);
@@ -355,7 +346,6 @@ public class @BasicMoveset : IInputActionCollection, IDisposable
     private readonly InputAction m_Basic_Left;
     private readonly InputAction m_Basic_Right;
     private readonly InputAction m_Basic_Jump;
-    private readonly InputAction m_Basic_Fire;
     private readonly InputAction m_Basic_DashLeft;
     private readonly InputAction m_Basic_DashRight;
     private readonly InputAction m_Basic_Stunt;
@@ -366,7 +356,6 @@ public class @BasicMoveset : IInputActionCollection, IDisposable
         public InputAction @Left => m_Wrapper.m_Basic_Left;
         public InputAction @Right => m_Wrapper.m_Basic_Right;
         public InputAction @Jump => m_Wrapper.m_Basic_Jump;
-        public InputAction @Fire => m_Wrapper.m_Basic_Fire;
         public InputAction @DashLeft => m_Wrapper.m_Basic_DashLeft;
         public InputAction @DashRight => m_Wrapper.m_Basic_DashRight;
         public InputAction @Stunt => m_Wrapper.m_Basic_Stunt;
@@ -388,9 +377,6 @@ public class @BasicMoveset : IInputActionCollection, IDisposable
                 @Jump.started -= m_Wrapper.m_BasicActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_BasicActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_BasicActionsCallbackInterface.OnJump;
-                @Fire.started -= m_Wrapper.m_BasicActionsCallbackInterface.OnFire;
-                @Fire.performed -= m_Wrapper.m_BasicActionsCallbackInterface.OnFire;
-                @Fire.canceled -= m_Wrapper.m_BasicActionsCallbackInterface.OnFire;
                 @DashLeft.started -= m_Wrapper.m_BasicActionsCallbackInterface.OnDashLeft;
                 @DashLeft.performed -= m_Wrapper.m_BasicActionsCallbackInterface.OnDashLeft;
                 @DashLeft.canceled -= m_Wrapper.m_BasicActionsCallbackInterface.OnDashLeft;
@@ -413,9 +399,6 @@ public class @BasicMoveset : IInputActionCollection, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
-                @Fire.started += instance.OnFire;
-                @Fire.performed += instance.OnFire;
-                @Fire.canceled += instance.OnFire;
                 @DashLeft.started += instance.OnDashLeft;
                 @DashLeft.performed += instance.OnDashLeft;
                 @DashLeft.canceled += instance.OnDashLeft;
@@ -483,7 +466,6 @@ public class @BasicMoveset : IInputActionCollection, IDisposable
         void OnLeft(InputAction.CallbackContext context);
         void OnRight(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnFire(InputAction.CallbackContext context);
         void OnDashLeft(InputAction.CallbackContext context);
         void OnDashRight(InputAction.CallbackContext context);
         void OnStunt(InputAction.CallbackContext context);

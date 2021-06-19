@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 0229cc226cbc1bc4cbf892692fd012ec
+guid: 6ccab078184b2bb428b5d44f4fd63597
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5538342780201793317
-    second: dash-input_0
+      213: -149637718798308796
+    second: stunt-input_0
   - first:
-      213: 1399419672742304971
-    second: dash-input_1
+      213: 4145861424969742085
+    second: stunt-input_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -119,12 +119,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dash-input_0
+      name: stunt-input_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 38
+        width: 26
         height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -133,19 +133,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd809b5b59ad323b0800000000000000
-      internalID: -5538342780201793317
+      spriteID: 44ae60e99416cedf0800000000000000
+      internalID: -149637718798308796
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dash-input_1
+      name: stunt-input_1
       rect:
         serializedVersion: 2
-        x: 38
+        x: 26
         y: 0
-        width: 38
+        width: 26
         height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bcc9f7527ccbb6310800000000000000
-      internalID: 1399419672742304971
+      spriteID: 507f053100f098930800000000000000
+      internalID: 4145861424969742085
       vertices: []
       indices: 
       edges: []

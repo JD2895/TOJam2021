@@ -4,23 +4,26 @@ using UnityEngine;
 
 public class SpriteStyleSwitcher : MonoBehaviour
 {
-    public Sprite fullSprite;
-    public Sprite bwSprite;
-    SpriteRenderer sprRenderer;
+    public Sprite enabledSprite;
+    public Sprite disabledSprite;
+    public bool recordingEnabled = true;
 
+    bool currentState = true;
+    SpriteRenderer sprRenderer;
     BasicMoveset controls;
 
     private void Awake()
     {
         controls = new BasicMoveset();
-        controls.Debug.StartRecording.performed += _ => ChangeSpriteStyle(true);
-        controls.Debug.PlayRecording.performed += _ => ChangeSpriteStyle(false);
+        controls.Debug.StartRecording.performed += _ => ChangeSpriteStyle(recordingEnabled);
+        controls.Debug.PlayRecording.performed += _ => ChangeSpriteStyle(!recordingEnabled);
+        currentState = recordingEnabled;
     }
 
     private void Start()
     {
         sprRenderer = this.GetComponent<SpriteRenderer>();
-        ChangeSpriteStyle(true);
+        ChangeSpriteStyle(currentState);
     }
 
     private void OnEnable()
@@ -33,13 +36,11 @@ public class SpriteStyleSwitcher : MonoBehaviour
         controls.Disable();
     }
 
-    private void ChangeSpriteStyle(bool isRecording)
+    private void ChangeSpriteStyle(bool enabled)
     {
-        if (isRecording)
-            sprRenderer.sprite = bwSprite;
+        if (enabled)
+            sprRenderer.sprite = enabledSprite;
         else
-        {
-            sprRenderer.sprite = fullSprite;
-        }
+            sprRenderer.sprite = disabledSprite;
     }
 }

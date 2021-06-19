@@ -1,11 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Interactions;
-using UnityEngine.Events;
-using UnityEngine.Audio;
 
 public class BeatController : MonoBehaviour
 {
