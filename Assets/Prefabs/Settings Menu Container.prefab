@@ -2360,11 +2360,11 @@ MonoBehaviour:
   listOfLevels:
   - MainMenu
   - InputCalibration
-  - Level1
-  - Level2
-  - Level3
-  - Level4
-  - Level5
+  - Tutorial
+  - BigJump
+  - OneLazer
+  - OneLazerOneBigJump
+  - LotsOfCanonsLotsOfBigJumps
   hazardToggle: {fileID: 24632472952338639}
   volumeSlider: {fileID: 24632473012018664}
   inputCalSlider: {fileID: 415401400}
