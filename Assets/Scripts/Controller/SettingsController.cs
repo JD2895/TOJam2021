@@ -108,6 +108,12 @@ public class SettingsController : MonoBehaviour
         StartCoroutine(LoadOutTransition(SceneManager.GetActiveScene().name));
     }
 
+    public void RestartInLastPlayback()
+    {
+        Time.timeScale = returningTimescale;
+        BeatController.Instance.RestartRequest();
+    }
+
     IEnumerator LoadOutTransition(string levelName)
     {
         //transition.SetTrigger("TransitionOut");
@@ -145,6 +151,11 @@ public class SettingsController : MonoBehaviour
     public void TriggerLevelFinish()
     {
         levelFinishEvent?.Invoke();
+    }
+
+    public void ResetScores()
+    {
+        PlayerPrefs.DeleteAll();
     }
 
     public void Exit()

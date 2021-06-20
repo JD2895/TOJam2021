@@ -68,4 +68,9 @@ public class RecordingTimerController : MonoBehaviour
         recordingTimerText.color = countingDownColor;
         countingUp = false;
     }
+
+    public float GetRecordedTime()
+    {
+        return recordedTime;
+    }
 }

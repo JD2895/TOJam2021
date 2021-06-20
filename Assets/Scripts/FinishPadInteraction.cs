@@ -5,13 +5,16 @@ using System;
 
 public class FinishPadInteraction : MonoBehaviour
 {
-    bool isInteractable = false;
+    public RecordingTimerController playerTimer;
 
+    bool isInteractable = false;
     CircleCollider2D mainCollider;
     Rigidbody2D rb;
     MovementRecorder movementRecorder;
     SideMovement sideMovement;
     Jump jump;
+    Stunt stunt;
+    Dash dash;
     ArtificialGravity artificialGravity;
     BasicMoveset controls;
 
@@ -48,6 +51,8 @@ public class FinishPadInteraction : MonoBehaviour
         sideMovement = this.GetComponent<SideMovement>();
         artificialGravity = this.GetComponent<ArtificialGravity>();
         jump = this.GetComponent<Jump>();
+        stunt = this.GetComponent<Stunt>();
+        dash = this.GetComponent<Dash>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -61,7 +66,16 @@ public class FinishPadInteraction : MonoBehaviour
                 sideMovement.enabled = false;
             if (jump != null)
                 jump.enabled = false;
+            if (stunt != null)
+                stunt.enabled = false;
+            if (dash != null)
+                dash.enabled = false;
             //artificialGravity.enabled = false;
+
+            // Set scoring
+            ScoreController.Instance.SetTimeTaken(Mathf.FloorToInt(playerTimer.GetRecordedTime()));
+            ScoreController.Instance.LevelComplete();
+
             StartCoroutine(SlightDelayBeforeFinish());
         }
     }
@@ -69,6 +83,16 @@ public class FinishPadInteraction : MonoBehaviour
     public  IEnumerator SlightDelayBeforeFinish()
     {
         yield return new WaitForSeconds(1f);
+        mainCollider.enabled = true;
+        movementRecorder.enabled = true;
+        if (sideMovement != null)
+            sideMovement.enabled = true;
+        if (jump != null)
+            jump.enabled = true;
+        if (stunt != null)
+            stunt.enabled = true;
+        if (dash != null)
+            dash.enabled = true;
         SettingsController.Instance.TriggerLevelFinish();
     }
 }

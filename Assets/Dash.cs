@@ -42,18 +42,24 @@ public class Dash : MonoBehaviour
 
     private void DashLeftPerformed()
     {
-        if (isRecording && playerInControl)
-            ApplyDash(-1f);
-        else if (!isRecording && !dashLeftInputBuffered && !dashRightInputBuffered)
-            StartCoroutine(DashLeftInputBuffer());
+        if(this.gameObject.GetComponent<Dash>().enabled)
+        {
+            if (isRecording && playerInControl)
+                ApplyDash(-1f);
+            else if (!isRecording && !dashLeftInputBuffered && !dashRightInputBuffered)
+                StartCoroutine(DashLeftInputBuffer());
+        }
     }
 
     private void DashRightPerformed()
     {
-        if (isRecording && playerInControl)
-            ApplyDash(1f);
-        else if (!isRecording && !dashLeftInputBuffered && !dashRightInputBuffered)
-            StartCoroutine(DashRightInputBuffer());
+        if (this.gameObject.GetComponent<Dash>().enabled)
+        {
+            if (isRecording && playerInControl)
+                ApplyDash(1f);
+            else if (!isRecording && !dashLeftInputBuffered && !dashRightInputBuffered)
+                StartCoroutine(DashRightInputBuffer());
+        }
     }
 
     private void DashBeat()
