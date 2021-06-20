@@ -83,7 +83,7 @@ public class LevelCompleteController : MonoBehaviour
     {
         yield return new WaitForSeconds(waitBeforeTicking);
         int displayedFinalScore = stuntScore;
-        while (displayedFinalScore >= actualFinalScore)
+        while (displayedFinalScore > actualFinalScore)
         {
             displayedFinalScore -= (int)Mathf.Ceil(tickingReductionFactor * Time.deltaTime);
             if (displayedFinalScore < actualFinalScore)
@@ -96,7 +96,6 @@ public class LevelCompleteController : MonoBehaviour
 
         if (actualFinalScore > highScoreValue)
         {
-            Debug.Log("in here");
             yield return new WaitForSeconds(waitBeforeTicking * 0.5f);
             highScoreText.text = actualFinalScore.ToString();
         }
@@ -106,7 +105,7 @@ public class LevelCompleteController : MonoBehaviour
     {
         yield return new WaitForSeconds(waitBeforeTicking);
         int displayedFinalScore = stuntScore;
-        while (displayedFinalScore <= actualFinalScore)
+        while (displayedFinalScore < actualFinalScore)
         {
             displayedFinalScore += (int)Mathf.Ceil(tickingReductionFactor * 1.5f * Time.deltaTime);
             if (displayedFinalScore > actualFinalScore)

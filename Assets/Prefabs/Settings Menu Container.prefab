@@ -2366,6 +2366,7 @@ MonoBehaviour:
   - OneLazer
   - OneLazerOneBigJump
   - LotsOfCanonsLotsOfBigJumps
+  - FinalScores
   hazardToggle: {fileID: 24632472952338639}
   volumeSlider: {fileID: 24632473012018664}
   inputCalSlider: {fileID: 415401400}
