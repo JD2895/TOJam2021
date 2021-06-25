@@ -9,6 +9,8 @@ public class Dash : MonoBehaviour
     public float dashInputBufferTime;
     public float dashBeatBufferTime;
     public bool isCalibration = false;
+    public float iTimeMax = 3f;
+    public HazardInteraction hazardInter;
 
     Rigidbody2D rb;
     BasicMoveset controls;
@@ -20,7 +22,6 @@ public class Dash : MonoBehaviour
     private void Awake()
     {
         controls = new BasicMoveset();
-        //controls.Basic.Jump.performed += _ => JumpPerformed();
         controls.Basic.DashLeft.performed += _ => DashLeftPerformed();
         controls.Basic.DashRight.performed += _ => DashRightPerformed();
 
@@ -112,10 +113,28 @@ public class Dash : MonoBehaviour
 
     public void ApplyDash(float direction)
     {
+        StartCoroutine(Dashing(direction));
+    }
+
+    IEnumerator Dashing(float direction)
+    {
+        if(!isRecording)
+            hazardInter.ChangeInteractionState(false);
         Vector2 oldVelocity = rb.velocity;
         rb.velocity = Vector2.zero;
+        yield return null;
         rb.MovePosition((Vector2)this.transform.position + (Vector2.right * dashDistance * Mathf.Sign(direction)));
         rb.velocity = oldVelocity;
+        if (!isRecording)
+            hazardInter.CheckForHazardOnPlayer();
+        float curITime = 0;
+        while (curITime < iTimeMax)
+        {
+            curITime += Time.deltaTime;
+            yield return null;
+        }
+        if (!isRecording)
+            hazardInter.ChangeInteractionState(true);
     }
 
     public void SetPlayerInControl(bool toSet)

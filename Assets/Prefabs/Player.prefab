@@ -5415,10 +5415,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13af1a6408fb14145bf737217691fb70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashDistance: 1
+  dashDistance: 1.7
   dashInputBufferTime: 0.2
   dashBeatBufferTime: 0.2
   isCalibration: 0
+  iTimeMax: 0.2
+  hazardInter: {fileID: 5319649732659936344}
 --- !u!114 &6084241836844651245
 MonoBehaviour:
   m_ObjectHideFlags: 0

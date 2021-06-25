@@ -2362,10 +2362,10 @@ MonoBehaviour:
   - MainMenu
   - InputCalibration
   - Tutorial
-  - BigJump
-  - OneLazer
-  - OneLazerOneBigJump
-  - LotsOfCanonsLotsOfBigJumps
+  - The Jump Pad
+  - Minor Lazer
+  - Saw That Coming
+  - Anarchy
   - FinalScores
   hazardToggle: {fileID: 24632472952338639}
   volumeSlider: {fileID: 24632473012018664}
