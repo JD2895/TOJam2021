@@ -7,6 +7,7 @@ public class CannonProjectileBehavior : MonoBehaviour
     public float speed;
     Rigidbody2D rb;
     BasicMoveset controls;
+    float secondsTillAutoDestroy = 10f;
     public SpriteRenderer sprRend;
 
     private void Awake()
@@ -31,6 +32,7 @@ public class CannonProjectileBehavior : MonoBehaviour
     void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
+        StartCoroutine(DestroyAfterSeconds(secondsTillAutoDestroy));
     }
 
     private void FixedUpdate()
@@ -46,5 +48,11 @@ public class CannonProjectileBehavior : MonoBehaviour
     public void SetSprite(Sprite toSet)
     {
         sprRend.sprite = toSet;
+    }
+
+    IEnumerator DestroyAfterSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        Destroy(this.gameObject);
     }
 }
