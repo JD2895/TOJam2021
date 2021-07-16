@@ -27,17 +27,29 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Saw That Coming.unity
     guid: 27a2787daf8623344a13e7b8f435a743
   - enabled: 1
-    path: Assets/Scenes/Levels/Anarchy.unity
-    guid: 795e6758dba209642a7a29e881d1012c
+    path: Assets/Scenes/Levels/Hop Skip.unity
+    guid: 0a02127dcb3f58949898c2d9d1c22cef
   - enabled: 1
     path: Assets/Scenes/Levels/Lazer Dash.unity
     guid: 9fdcdf94debeef2409673a69653134cd
   - enabled: 1
-    path: Assets/Scenes/Levels/Hop Skip.unity
-    guid: 0a02127dcb3f58949898c2d9d1c22cef
-  - enabled: 1
     path: Assets/Scenes/Levels/Dash.unity
     guid: ca421f734d35b4342b017a3f7eec9b44
+  - enabled: 1
+    path: Assets/Scenes/Levels/Spike Slope.unity
+    guid: 8b39079ad51e47049a9e4e7fe1261368
+  - enabled: 1
+    path: Assets/Scenes/Levels/Anarchy.unity
+    guid: 795e6758dba209642a7a29e881d1012c
+  - enabled: 1
+    path: Assets/Scenes/Levels/Jump Dash Spikes.unity
+    guid: 09dce22236ad3134ba1810ec3d34f7f0
+  - enabled: 1
+    path: Assets/Scenes/Levels/Dash Against The Wall.unity
+    guid: 1ea1785008b10664daf6d8a7d265a3ce
+  - enabled: 1
+    path: Assets/Scenes/Levels/Finale.unity
+    guid: 9dcea93abd496ce4189f204b67394fd6
   - enabled: 1
     path: Assets/Scenes/FinalScores.unity
     guid: 8e6b9a5000f8ae344a0dc8f8d50cbf88

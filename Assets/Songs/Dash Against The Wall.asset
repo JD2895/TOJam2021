@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77a588bf453d84a4d907dceb26b06858, type: 3}
+  m_Name: Dash Against The Wall
+  m_EditorClassIdentifier: 
+  beatsOnlyClip: {fileID: 8300000, guid: 957af66e559dcb445bc49e2ef952dfae, type: 3}
+  fullAudioClip: {fileID: 8300000, guid: 6e01f2b9814c84d47a3e1d8a22e34078, type: 3}
+  beatEvents: 00000000020000000000000001000000000000000200000000000000010000000000000001000000000000000200000000000000010000000000000000000000

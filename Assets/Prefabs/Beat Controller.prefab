@@ -14,7 +14,7 @@ GameObject:
   m_Layer: 0
   m_Name: Beat Controller
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSongData: {fileID: 11400000, guid: 2d191155f90176f49aca8401920413f6, type: 2}
-  startOffset: -0.35
+  beatTrackSpriteController: {fileID: 0}
 --- !u!82 &6790599599647114467
 AudioSource:
   m_ObjectHideFlags: 0

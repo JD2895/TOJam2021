@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: First
   m_EditorClassIdentifier: 
   beatsOnlyClip: {fileID: 8300000, guid: 6177603bfe3d1c74eba4fb2d7d8ce1dc, type: 3}
-  fullAudioClip: {fileID: 0}
-  bpm: 140
+  fullAudioClip: {fileID: 8300000, guid: 1a2b57e464491234da72304b2533c653, type: 3}
   beatEvents: 03000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000
