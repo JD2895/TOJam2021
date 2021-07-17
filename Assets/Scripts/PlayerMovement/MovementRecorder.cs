@@ -132,6 +132,7 @@ public class MovementRecorder : MonoBehaviour
 
         // Player Positioning
         playerObject.transform.position = startingPosition;
+        playerObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
         isRecording = true;
     }

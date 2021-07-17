@@ -14,6 +14,7 @@ public class Jump : MonoBehaviour
     Rigidbody2D rb;
     BasicMoveset controls;
     bool jumpInputBuffered = false;
+    bool otherInputBuffered = false;
     bool jumpBeatBuffered = false;
     bool isRecording = true;
 
@@ -21,6 +22,11 @@ public class Jump : MonoBehaviour
     {
         controls = new BasicMoveset();
         controls.Basic.Jump.performed += _ => JumpPerformed();
+
+        // Other check
+        controls.Basic.DashLeft.performed += _ => OtherPerformed();
+        controls.Basic.DashRight.performed += _ => OtherPerformed();
+        controls.Basic.Stunt.performed += _ => OtherPerformed();
 
         controls.Debug.StartRecording.performed += _ => ChangeRecordState(true);
         controls.Debug.PlayRecording.performed += _ => ChangeRecordState(false);
@@ -46,6 +52,12 @@ public class Jump : MonoBehaviour
             StartCoroutine(JumpInputBuffer());
     }
 
+    private void OtherPerformed()
+    {
+        if (!isRecording && !otherInputBuffered)
+            StartCoroutine(OtherInputBuffer());
+    }
+
     private void JumpBeat()
     {
         StartCoroutine(JumpBeatBuffer());
@@ -60,7 +72,10 @@ public class Jump : MonoBehaviour
     {
         if (jumpBeatBuffered && jumpInputBuffered)
         {
-            ApplyJumpForce();
+            if (!otherInputBuffered)
+            {
+                ApplyJumpForce();
+            }
             jumpInputBuffered = false;
             jumpBeatBuffered = false;
         }
@@ -71,6 +86,13 @@ public class Jump : MonoBehaviour
         jumpInputBuffered = true;
         yield return new WaitForSeconds(jumpInputBufferTime);
         jumpInputBuffered = false;
+    }
+
+    public IEnumerator OtherInputBuffer()
+    {
+        otherInputBuffered = true;
+        yield return new WaitForSeconds(jumpInputBufferTime);
+        otherInputBuffered = false;
     }
 
     public IEnumerator JumpBeatBuffer()

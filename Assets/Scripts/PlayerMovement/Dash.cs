@@ -16,6 +16,7 @@ public class Dash : MonoBehaviour
     BasicMoveset controls;
     bool dashRightInputBuffered = false;
     bool dashLeftInputBuffered = false;
+    bool otherInputBuffered = false;
     bool dashBeatBuffered = false;
     bool isRecording = true;
 
@@ -24,6 +25,10 @@ public class Dash : MonoBehaviour
         controls = new BasicMoveset();
         controls.Basic.DashLeft.performed += _ => DashLeftPerformed();
         controls.Basic.DashRight.performed += _ => DashRightPerformed();
+
+        // Other check
+        controls.Basic.Jump.performed += _ => OtherPerformed();
+        controls.Basic.Stunt.performed += _ => OtherPerformed();
 
         controls.Debug.StartRecording.performed += _ => ChangeRecordState(true);
         controls.Debug.PlayRecording.performed += _ => ChangeRecordState(false);
@@ -63,6 +68,12 @@ public class Dash : MonoBehaviour
         }
     }
 
+    private void OtherPerformed()
+    {
+        if (!isRecording && !otherInputBuffered)
+            StartCoroutine(OtherInputBuffer());
+    }
+
     private void DashBeat()
     {
         StartCoroutine(DashBeatBuffer());
@@ -77,14 +88,20 @@ public class Dash : MonoBehaviour
     {
         if (dashBeatBuffered && dashLeftInputBuffered)
         {
-            ApplyDash(-1f);
+            if (!otherInputBuffered)
+            {
+                ApplyDash(-1f);
+            }
             dashLeftInputBuffered = false;
             dashBeatBuffered = false;
         }
 
         if (dashBeatBuffered && dashRightInputBuffered)
         {
-            ApplyDash(1f);
+            if (!otherInputBuffered)
+            {
+                ApplyDash(1f);
+            }
             dashRightInputBuffered = false;
             dashBeatBuffered = false;
         }
@@ -102,6 +119,13 @@ public class Dash : MonoBehaviour
         dashRightInputBuffered = true;
         yield return new WaitForSeconds(dashInputBufferTime);
         dashRightInputBuffered = false;
+    }
+
+    public IEnumerator OtherInputBuffer()
+    {
+        otherInputBuffered = true;
+        yield return new WaitForSeconds(dashInputBufferTime);
+        otherInputBuffered = false;
     }
 
     public IEnumerator DashBeatBuffer()

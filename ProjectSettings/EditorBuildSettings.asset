@@ -21,34 +21,34 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/The Jump Pad.unity
     guid: 436898ee27d7603469a0b2a9db394793
   - enabled: 1
-    path: Assets/Scenes/Levels/Minor Lazer.unity
+    path: Assets/Scenes/Levels/The Floor Is Lazer.unity
     guid: a7cf95bf1f44d7d4592feea2ff44a90d
   - enabled: 1
-    path: Assets/Scenes/Levels/Saw That Coming.unity
+    path: Assets/Scenes/Levels/Orion's Trap.unity
     guid: 27a2787daf8623344a13e7b8f435a743
   - enabled: 1
-    path: Assets/Scenes/Levels/Hop Skip.unity
+    path: Assets/Scenes/Levels/Middle Seat.unity
     guid: 0a02127dcb3f58949898c2d9d1c22cef
   - enabled: 1
-    path: Assets/Scenes/Levels/Lazer Dash.unity
+    path: Assets/Scenes/Levels/Just Dash.unity
     guid: 9fdcdf94debeef2409673a69653134cd
   - enabled: 1
-    path: Assets/Scenes/Levels/Dash.unity
+    path: Assets/Scenes/Levels/Into The Thick Of It.unity
     guid: ca421f734d35b4342b017a3f7eec9b44
   - enabled: 1
-    path: Assets/Scenes/Levels/Spike Slope.unity
+    path: Assets/Scenes/Levels/Over The Spikey Wall.unity
     guid: 8b39079ad51e47049a9e4e7fe1261368
   - enabled: 1
-    path: Assets/Scenes/Levels/Anarchy.unity
+    path: Assets/Scenes/Levels/Why Jump When You Can Jump.unity
     guid: 795e6758dba209642a7a29e881d1012c
   - enabled: 1
-    path: Assets/Scenes/Levels/Jump Dash Spikes.unity
+    path: Assets/Scenes/Levels/Jumpman.unity
     guid: 09dce22236ad3134ba1810ec3d34f7f0
   - enabled: 1
-    path: Assets/Scenes/Levels/Dash Against The Wall.unity
+    path: Assets/Scenes/Levels/A Measured Response.unity
     guid: 1ea1785008b10664daf6d8a7d265a3ce
   - enabled: 1
-    path: Assets/Scenes/Levels/Finale.unity
+    path: Assets/Scenes/Levels/All Together.unity
     guid: 9dcea93abd496ce4189f204b67394fd6
   - enabled: 1
     path: Assets/Scenes/FinalScores.unity

@@ -644,7 +644,7 @@ GameObject:
   - component: {fileID: 24632472952338624}
   - component: {fileID: 24632472952338639}
   m_Layer: 5
-  m_Name: Hazard Collision Toggle
+  m_Name: Invincible Toggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2371,16 +2371,16 @@ MonoBehaviour:
   - InputCalibration
   - Tutorial
   - The Jump Pad
-  - Minor Lazer
-  - Saw That Coming
-  - Anarchy
-  - Hop Skip
-  - Lazer Dash
-  - Dash
-  - Spike Slope
-  - Jump Dash Spikes
-  - Dash Against The Wall
-  - Finale
+  - The Floor Is Lazer
+  - Over The Spikey Wall
+  - Just Dash
+  - Orion's Trap
+  - Into The Thick Of It
+  - Why Jump When You Can Jump
+  - Middle Seat
+  - A Measured Response
+  - Jumpman
+  - All Together
   - FinalScores
   hazardToggle: {fileID: 24632472952338639}
   volumeSlider: {fileID: 24632473012018664}
@@ -2596,7 +2596,7 @@ GameObject:
   - component: {fileID: 24632474195261607}
   - component: {fileID: 24632474195261624}
   m_Layer: 5
-  m_Name: Hazard Collision Text
+  m_Name: Invincible Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2649,7 +2649,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: HAZARD COLLISION
+  m_text: INVINCIBLE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

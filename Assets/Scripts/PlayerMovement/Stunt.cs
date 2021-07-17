@@ -13,12 +13,18 @@ public class Stunt : MonoBehaviour
     bool playerInControl = false;
     bool stuntBeatBuffered = false;
     bool stuntInputBuffered = false;
+    bool otherInputBuffered = false;
     bool isRecording = true;
 
     private void Awake()
     {
         controls = new BasicMoveset();
         controls.Basic.Stunt.performed += _ => StuntPerformed();
+
+        // Other check
+        controls.Basic.DashLeft.performed += _ => OtherPerformed();
+        controls.Basic.DashRight.performed += _ => OtherPerformed();
+        controls.Basic.Jump.performed += _ => OtherPerformed();
 
         controls.Debug.StartRecording.performed += _ => ChangeRecordState(true);
         controls.Debug.PlayRecording.performed += _ => ChangeRecordState(false);
@@ -42,13 +48,23 @@ public class Stunt : MonoBehaviour
             StartCoroutine(StuntInputBuffer());
     }
 
+    private void OtherPerformed()
+    {
+        if (!isRecording && !otherInputBuffered)
+            StartCoroutine(OtherInputBuffer());
+    }
+
     private void Update()
     {
         if (stuntBeatBuffered && stuntInputBuffered)
         {
-            DoStunt();
+            if(!otherInputBuffered)
+            {
+                DoStunt();
+            }
             stuntInputBuffered = false;
             stuntBeatBuffered = false;
+            otherInputBuffered = false;
         }
     }
 
@@ -64,6 +80,13 @@ public class Stunt : MonoBehaviour
         stuntInputBuffered = true;
         yield return new WaitForSeconds(stuntInputBufferTime);
         stuntInputBuffered = false;
+    }
+
+    public IEnumerator OtherInputBuffer()
+    {
+        otherInputBuffered = true;
+        yield return new WaitForSeconds(stuntInputBufferTime);
+        otherInputBuffered = false;
     }
 
     public IEnumerator StuntBeatBuffer()
