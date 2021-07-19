@@ -48,7 +48,7 @@ public class Jump : MonoBehaviour
     {
         if (isRecording && playerInControl)
             ApplyJumpForce();
-        else if (!isRecording && !jumpInputBuffered)
+        else if ((!isRecording && !jumpInputBuffered) || (isCalibration && !jumpInputBuffered))
             StartCoroutine(JumpInputBuffer());
     }
 

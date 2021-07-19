@@ -20,8 +20,8 @@ public class SettingsController : MonoBehaviour
     public event Action levelFinishEvent;
 
     // Hazard Collision
-    bool _hazardCollisionEnabled = true;
-    public bool HazardCollisionEnabled { get { return _hazardCollisionEnabled; } }
+    bool _hazardCollisionEnabled = false;
+    public bool HazardCollisionEnabled { get { return !_hazardCollisionEnabled; } }
 
     // Level Changing
     public List<string> listOfLevels = new List<string>();

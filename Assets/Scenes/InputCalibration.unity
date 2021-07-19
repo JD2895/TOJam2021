@@ -135,6 +135,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 557910332, guid: 7230aa60fac3f4a46b9449f327449e80, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1343553568229010123, guid: 7230aa60fac3f4a46b9449f327449e80, type: 3}
+      propertyPath: recordJump
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2389033759419777519, guid: 7230aa60fac3f4a46b9449f327449e80, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -6190,9 +6198,9 @@ PrefabInstance:
       propertyPath: m_text
       value: "\"BEAT EVENTS\" come from the game's music. \n\"INPUT EVENTS\" are
         made by you! (Press Up or Space).\nPress Up or Space whenever you hear a
-        beat.\nIf the yellow and green flash don't line up,\nopen the Settings menu
-        (Escape) to calibrate input.\nThe ball below will jump whenever the events
-        line up sufficiently.\n"
+        beat.\nIf the yellow and green flash don't appear at the same time,\nopen
+        the Settings menu (Escape) to calibrate input.\nThe ball below will jump
+        whenever the events line up sufficiently.\n"
       objectReference: {fileID: 0}
     - target: {fileID: 4449534121195539339, guid: a27ba9791ee572141be8b70ef1a0f96f, type: 3}
       propertyPath: m_SizeDelta.y
